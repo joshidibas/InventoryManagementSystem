@@ -34,6 +34,7 @@ namespace InventoryManagementSystem.Models
         public virtual DbSet<Stock> Stock { get; set; }
         public virtual DbSet<SupplierDetail> SupplierDetail { get; set; }
         public virtual DbSet<Suppliers> Suppliers { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UserAccounts> UserAccounts { get; set; }
         public virtual DbSet<UserDetails> UserDetails { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
