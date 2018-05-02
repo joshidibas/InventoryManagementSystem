@@ -1165,10 +1165,11 @@ color: #333;
 		margin-left: -20px;
 		margin-right: -20px;	
 	}
+
 	
 	
 	.subnavbar-inner {
-		height: auto;
+		height: 120px;
 	}
 	
 	.subnavbar .container > ul {
@@ -1271,9 +1272,7 @@ color: #333;
 }
 
 @media(max-width:1200px) and (min-width:767px){
-    .subnavbar-inner {
-        height: 120px;
-    }
+ 
     .subnavbar .container > ul > li {
         border: 1px solid #d9d9d9;
         border-top: none;
