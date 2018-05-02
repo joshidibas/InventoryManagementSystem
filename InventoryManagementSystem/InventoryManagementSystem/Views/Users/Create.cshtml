@@ -1,0 +1,92 @@
+﻿@model InventoryManagementSystem.Models.UserAccounts
+
+@{
+    ViewBag.Title = "Users";
+}
+@section content {
+   
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="content-inner">
+                <section class="forms">
+                    <div class="container-fluid">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <!-- Form Elements -->
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-header d-flex align-items-center">
+                                            <h3 class="h4">Add User</h3>
+                                        </div>
+                                        <div class="card-body">
+                                           
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">User Type Name</label>
+                                                <div class="col-sm-9">
+                                                    @Html.DropDownList("UserTypeID", null, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.UserTypeID, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Email</label>
+                                                <div class="col-sm-9">
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Password</label>
+                                                <div class="col-sm-9">
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Date Created</label>
+                                                <div class="col-sm-9">
+                                                    @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Date Modified</label>
+                                                <div class="col-sm-9">
+                                                    @Html.EditorFor(model => model.DateModified, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.DateModified, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Modified By</label>
+                                                <div class="col-sm-9">
+                                                    @Html.DropDownList("ModifiedBy", null, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <button type="submit" class="btn btn-secondary"><a href="/Users" style="text-decoration:none;color:white">Cancel</a></button>
+                                                    <button type="submit" class="btn btn-primary" value="Create">Create</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+}

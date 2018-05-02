@@ -7,23 +7,31 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InventoryManagementSystem.Models;
+using InventoryManagementSystem.ViewModel;
 
 namespace InventoryManagementSystem.Controllers
 {
     public class UserDetailsController : Controller
     {
-        private InventoryMSEntities db = new InventoryMSEntities();
+        private IMSEntities db = new IMSEntities();
+
+
 
         // GET: UserDetails
         public ActionResult Index()
         {
-            var userDetails = db.UserDetails.Include(u => u.UserAccounts);
+
+
+            var userDetails = db.UserDetails.Include(u => u.UserAccounts).Include(u => u.UserAccounts1);
+                //.Join(db.UserAccounts, ud => ud.UserAccountID, ua => ua.UserAccountID, (ud, ua) => new {UserAccounts = ua, UserDetails=ud}).Where(u => u.UserAccounts.UserTypeID == 3);
             return View(userDetails.ToList());
         }
 
         // GET: UserDetails/Details/5
         public ActionResult Details(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +47,9 @@ namespace InventoryManagementSystem.Controllers
         // GET: UserDetails/Create
         public ActionResult Create()
         {
+
+
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email");
             ViewBag.UserAccountID = new SelectList(db.UserAccounts, "UserAccountID", "Email");
             return View();
         }
@@ -48,7 +59,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserDetailD,UserAccountID,FirstName,LastName,BirthDate,ContactNumber,Address")] UserDetails userDetails)
+        public ActionResult Create([Bind(Include = "UserDetailD,UserAccountID,FirstName,LastName,BirthDate,Phone,Address,DateCreated,DateModified,ModifiedBy")] UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +68,7 @@ namespace InventoryManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", userDetails.ModifiedBy);
             ViewBag.UserAccountID = new SelectList(db.UserAccounts, "UserAccountID", "Email", userDetails.UserAccountID);
             return View(userDetails);
         }
@@ -64,6 +76,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: UserDetails/Edit/5
         public ActionResult Edit(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -73,6 +87,7 @@ namespace InventoryManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", userDetails.ModifiedBy);
             ViewBag.UserAccountID = new SelectList(db.UserAccounts, "UserAccountID", "Email", userDetails.UserAccountID);
             return View(userDetails);
         }
@@ -82,7 +97,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserDetailD,UserAccountID,FirstName,LastName,BirthDate,ContactNumber,Address")] UserDetails userDetails)
+        public ActionResult Edit([Bind(Include = "UserDetailD,UserAccountID,FirstName,LastName,BirthDate,Phone,Address,DateCreated,DateModified,ModifiedBy")] UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +105,7 @@ namespace InventoryManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", userDetails.ModifiedBy);
             ViewBag.UserAccountID = new SelectList(db.UserAccounts, "UserAccountID", "Email", userDetails.UserAccountID);
             return View(userDetails);
         }
@@ -97,6 +113,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: UserDetails/Delete/5
         public ActionResult Delete(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

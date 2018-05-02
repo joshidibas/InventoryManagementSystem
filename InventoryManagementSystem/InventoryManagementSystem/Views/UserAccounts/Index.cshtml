@@ -1,45 +1,88 @@
 ﻿@model IEnumerable<InventoryManagementSystem.Models.UserAccounts>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customers";
 }
 
-<h2>Index</h2>
+@section content{
+  
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="col-lg-12">
+                <section class="tables">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4"> @Html.ActionLink("Add a Customer", "Create")</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>                       
+                                                        <th>
+                                                            User Type
+                                                        </th>
+                                                        <th>
+                                                            Email
+                                                        </th>
+                                                        
+                                                        <th>
+                                                            Date Created
+                                                        </th>
+                                                        <th>
+                                                            Date Modified
+                                                        </th>
+                                                       
+                                                        <th>
+                                                            Action
+                                                        </th>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserType.UserTypeName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserType.UserTypeName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserAccountID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserAccountID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserAccountID })
-        </td>
-    </tr>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    @foreach (var item in Model)
+                                                    {
+
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.UserType.UserTypeName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Email)
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateCreated)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateModified)
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                <a href='@Url.Action("Purchases", null , new { id = item.UserAccountID })' class="btn btn-primary">Purchases</a>
+                                                                <a href='@Url.Action("Edit", "UserAccounts",  new { id = item.UserAccountID })' class="btn btn-info">Edit</a>
+                                                                <a href='@Url.Action("Delete", "UserAccounts" ,new { id = item.UserAccountID })' class="btn btn-danger">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
 }
-
-</table>

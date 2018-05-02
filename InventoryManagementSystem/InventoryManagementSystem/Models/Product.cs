@@ -17,7 +17,6 @@ namespace InventoryManagementSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ProductDetails = new HashSet<ProductDetails>();
             this.ProductSales = new HashSet<ProductSales>();
             this.ProductSupplier = new HashSet<ProductSupplier>();
             this.Stock = new HashSet<Stock>();
@@ -28,10 +27,13 @@ namespace InventoryManagementSystem.Models
         public string ProductName { get; set; }
         public Nullable<int> PricePerItem { get; set; }
         public string Description { get; set; }
+        public Nullable<int> ThresholdQuantity { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
+        public virtual UserAccounts UserAccounts { get; set; }
         public virtual ProductType ProductType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductDetails> ProductDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductSales> ProductSales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,51 +1,85 @@
 ﻿@model IEnumerable<InventoryManagementSystem.Models.SupplierDetail>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Supplier Details";
 }
 
-<h2>Index</h2>
+@section content{
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactPersonName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Suppliers.SupplierEmail)
-        </th>
-        <th></th>
-    </tr>
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="col-lg-12">
+                <section class="tables">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4"> @Html.ActionLink("Add Supplier Details", "Create")</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Contact Person Name
+                                                        </th>
+                                                        <th>
+                                                            Contact Number
+                                                        </th>
+                                                        <th>
+                                                            Address
+                                                        </th>
+                                                        <th>
+                                                            Supplier
+                                                        </th>
+                                                        <th>
+                                                            Date Created
+                                                        </th>
+                                                        <th>
+                                                            Action
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+    {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ContactPersonName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Address)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Suppliers.SupplierName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DateCreated)
+                                                    </td>
+                                                    <td>
+                                                        <a href='@Url.Action("Edit", "SupplierDetail" , new { id = item.SupplierDetailID })' class="btn btn-info">Edit</a>
+                                                        <a href='@Url.Action("Delete", "SupplierDetail" ,new { id = item.SupplierDetailID })' class="btn btn-danger">Delete</a>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactPersonName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Suppliers.SupplierEmail)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SupplierDetailID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SupplierDetailID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SupplierDetailID })
-        </td>
-    </tr>
+
+                                                        
+                                                    </td>
+                                                </tr>
 }
-
-</table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+}

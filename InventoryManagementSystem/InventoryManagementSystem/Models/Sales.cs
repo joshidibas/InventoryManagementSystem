@@ -24,9 +24,13 @@ namespace InventoryManagementSystem.Models
         public Nullable<System.DateTime> BillingDate { get; set; }
         public Nullable<int> BillingAmount { get; set; }
         public int UserAccountID { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductSales> ProductSales { get; set; }
         public virtual UserAccounts UserAccounts { get; set; }
+        public virtual UserAccounts UserAccounts1 { get; set; }
     }
 }

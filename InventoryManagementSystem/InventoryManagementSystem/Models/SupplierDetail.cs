@@ -19,7 +19,11 @@ namespace InventoryManagementSystem.Models
         public string ContactNumber { get; set; }
         public string Address { get; set; }
         public string ContactPersonName { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
+        public virtual UserAccounts UserAccounts { get; set; }
         public virtual Suppliers Suppliers { get; set; }
     }
 }

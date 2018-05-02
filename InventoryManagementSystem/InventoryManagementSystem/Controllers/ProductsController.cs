@@ -7,38 +7,61 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InventoryManagementSystem.Models;
+using InventoryManagementSystem.ViewModel;
 
 namespace InventoryManagementSystem.Controllers
 {
     public class ProductsController : Controller
     {
-        private InventoryMSEntities db = new InventoryMSEntities();
+        private IMSEntities db = new IMSEntities();
+
+
 
         // GET: Products
         public ActionResult Index()
         {
-            var product = db.Product.Include(p => p.ProductType);
+
+
+            var product = db.Product.Include(p => p.UserAccounts).Include(p => p.ProductType);
             return View(product.ToList());
         }
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
-            if (product == null)
+            try
             {
-                return HttpNotFound();
+                var model = Models.ProductDetails.GetProductDetails(db, id).FirstOrDefault();
+                if (model != null)
+                {
+                    return View(model);
+                }
+                else
+                {
+                    throw new Exception("Selected product is not added to the stock");
+                }
             }
-            return View(product);
+            catch(Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+
+            }
+            return View();
+
         }
 
         // GET: Products/Create
         public ActionResult Create()
         {
+
+
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email");
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductTypeID", "ProductTypeName");
             return View();
         }
@@ -48,7 +71,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ProductTypeID,ProductName,PricePerItem,Description")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,ProductTypeID,ProductName,PricePerItem,Description,ThresholdQuantity,DateCreated,DateModified,ModifiedBy")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +80,7 @@ namespace InventoryManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", product.ModifiedBy);
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductTypeID", "ProductTypeName", product.ProductTypeID);
             return View(product);
         }
@@ -64,6 +88,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -73,6 +99,7 @@ namespace InventoryManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", product.ModifiedBy);
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductTypeID", "ProductTypeName", product.ProductTypeID);
             return View(product);
         }
@@ -82,7 +109,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,ProductTypeID,ProductName,PricePerItem,Description")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,ProductTypeID,ProductName,PricePerItem,Description,ThresholdQuantity,DateCreated,DateModified,ModifiedBy")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +117,7 @@ namespace InventoryManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", product.ModifiedBy);
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductTypeID", "ProductTypeName", product.ProductTypeID);
             return View(product);
         }
@@ -97,6 +125,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

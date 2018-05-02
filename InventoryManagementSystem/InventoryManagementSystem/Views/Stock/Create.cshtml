@@ -1,0 +1,84 @@
+﻿@model InventoryManagementSystem.Models.Stock
+
+@{
+    ViewBag.Title = "Stock";
+}
+
+@section content
+    {
+
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="content-inner">
+                <section class="forms">
+                    <div class="container-fluid">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <!-- Form Elements -->
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-header d-flex align-items-center">
+                                            <h3 class="h4">Add Stock</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Product Name</label>
+                                                <div class="col-sm-9">
+                                                    @Html.DropDownList("ProductID", null, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Quantity Remaining</label>
+                                                <div class="col-sm-9">
+                                                    @Html.EditorFor(model => model.QuantityRemaining, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.QuantityRemaining, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Date Created</label>
+                                                <div class="col-sm-9">
+                                                    @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Date Modified</label>
+                                                <div class="col-sm-9">
+                                                    @Html.EditorFor(model => model.DateModified, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.DateModified, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 form-control-label">Modified By</label>
+                                                <div class="col-sm-9">
+                                                    @Html.DropDownList("ModifiedBy", null, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <button type="submit" class="btn btn-secondary"><a href="/Stock" style="text-decoration:none;color:white">Cancel</a></button>
+                                                    <button type="submit" class="btn btn-primary" value="Create">Create</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+}

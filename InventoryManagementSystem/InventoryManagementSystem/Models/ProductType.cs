@@ -22,9 +22,12 @@ namespace InventoryManagementSystem.Models
     
         public int ProductTypeID { get; set; }
         public string ProductTypeName { get; set; }
-        public Nullable<int> ThresholdQuantity { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
+        public virtual UserAccounts UserAccounts { get; set; }
     }
 }

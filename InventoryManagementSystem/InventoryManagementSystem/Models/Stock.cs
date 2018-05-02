@@ -14,10 +14,22 @@ namespace InventoryManagementSystem.Models
     
     public partial class Stock
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Stock()
+        {
+            this.StockManagment = new HashSet<StockManagment>();
+        }
+    
         public int StockID { get; set; }
         public int ProductID { get; set; }
         public Nullable<int> QuantityRemaining { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
         public virtual Product Product { get; set; }
+        public virtual UserAccounts UserAccounts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockManagment> StockManagment { get; set; }
     }
 }

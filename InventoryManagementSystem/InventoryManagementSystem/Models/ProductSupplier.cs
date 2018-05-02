@@ -17,8 +17,12 @@ namespace InventoryManagementSystem.Models
         public int ProductSupplierID { get; set; }
         public int ProductID { get; set; }
         public int SupplierID { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
         public virtual Product Product { get; set; }
+        public virtual UserAccounts UserAccounts { get; set; }
         public virtual Suppliers Suppliers { get; set; }
     }
 }
