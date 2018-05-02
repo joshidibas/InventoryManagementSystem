@@ -12,12 +12,17 @@ namespace InventoryManagementSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class ProductXDetails
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int ProductDetailID { get; set; }
+        public int ProductID { get; set; }
+        public Nullable<int> UnitCostPrice { get; set; }
+        public string Location { get; set; }
+        public Nullable<int> ThresholdQuantity { get; set; }
+        public string Unit { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+    
+        public virtual Product Product { get; set; }
     }
 }

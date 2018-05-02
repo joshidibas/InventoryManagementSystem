@@ -14,7 +14,7 @@ namespace InventoryManagementSystem.Models
     
     public partial class ProductSales
     {
-        public int ProductSalesID { get; set; }
+        public Nullable<int> ProductSalesID { get; set; }
         public int ProductID { get; set; }
         public int SalesID { get; set; }
         public Nullable<int> Quantity { get; set; }

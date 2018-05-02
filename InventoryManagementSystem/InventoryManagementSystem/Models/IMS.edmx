@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IMS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductID" />
@@ -14,16 +14,16 @@
           <Property Name="ProductName" Type="varchar" MaxLength="100" />
           <Property Name="PricePerItem" Type="int" />
           <Property Name="Description" Type="varchar" MaxLength="100" />
-          <Property Name="ThresholdQuantity" Type="int" />
           <Property Name="DateCreated" Type="date" />
           <Property Name="DateModified" Type="date" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductSales">
           <Key>
-            <PropertyRef Name="ProductSalesID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="SalesID" />
           </Key>
-          <Property Name="ProductSalesID" Type="int" Nullable="false" />
+          <Property Name="ProductSalesID" Type="int" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="SalesID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
@@ -53,6 +53,19 @@
           <Property Name="DateCreated" Type="date" />
           <Property Name="DateModified" Type="date" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductXDetails">
+          <Key>
+            <PropertyRef Name="ProductDetailID" />
+          </Key>
+          <Property Name="ProductDetailID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="UnitCostPrice" Type="int" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="ThresholdQuantity" Type="int" />
+          <Property Name="Unit" Type="varchar" MaxLength="30" />
+          <Property Name="DateCreated" Type="date" />
+          <Property Name="DateModified" Type="date" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -116,21 +129,11 @@
           <Property Name="DateModified" Type="date" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="UserAccounts">
           <Key>
             <PropertyRef Name="UserAccountID" />
           </Key>
-          <Property Name="UserAccountID" Type="int" Nullable="false" />
+          <Property Name="UserAccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserTypeID" Type="int" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
           <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
@@ -157,7 +160,7 @@
           <Key>
             <PropertyRef Name="UserTypeID" />
           </Key>
-          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserTypeName" Type="varchar" MaxLength="100" />
           <Property Name="DateCreated" Type="date" />
           <Property Name="DateModified" Type="date" />
@@ -267,6 +270,18 @@
             </Principal>
             <Dependent Role="ProductType">
               <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductXDetails_UserAccounts_FK">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductXDetails" Type="Self.ProductXDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductXDetails">
+              <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -438,48 +453,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="IMSModelStoreContainer">
+        <EntityContainer Name="IMSStoreContainer">
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSales" EntityType="Self.ProductSales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSupplier" EntityType="Self.ProductSupplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductXDetails" EntityType="Self.ProductXDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockManagment" EntityType="Self.StockManagment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierDetail" EntityType="Self.SupplierDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
@@ -518,6 +502,10 @@
           <AssociationSet Name="ProductType_ModifiedBy_FK" Association="Self.ProductType_ModifiedBy_FK">
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="ProductType" EntitySet="ProductType" />
+          </AssociationSet>
+          <AssociationSet Name="ProductXDetails_UserAccounts_FK" Association="Self.ProductXDetails_UserAccounts_FK">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductXDetails" EntitySet="ProductXDetails" />
           </AssociationSet>
           <AssociationSet Name="Sales_ModifiedBy_FK" Association="Self.Sales_ModifiedBy_FK">
             <End Role="UserAccounts" EntitySet="UserAccounts" />
@@ -579,7 +567,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="IMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="IMS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductID" />
@@ -589,7 +577,6 @@
           <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="PricePerItem" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ThresholdQuantity" Type="Int32" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
           <Property Name="DateModified" Type="DateTime" Precision="0" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
@@ -598,12 +585,14 @@
           <NavigationProperty Name="ProductSales" Relationship="Self.ProductSales_Product_FK" FromRole="Product" ToRole="ProductSales" />
           <NavigationProperty Name="ProductSupplier" Relationship="Self.ProductSupplier_PT_FK" FromRole="Product" ToRole="ProductSupplier" />
           <NavigationProperty Name="Stock" Relationship="Self.Stock_Product_FK" FromRole="Product" ToRole="Stock" />
+          <NavigationProperty Name="ProductXDetails" Relationship="IMS.ProductXDetails_UserAccounts_FK" FromRole="Product" ToRole="ProductXDetails" />
         </EntityType>
         <EntityType Name="ProductSales">
           <Key>
-            <PropertyRef Name="ProductSalesID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="SalesID" />
           </Key>
-          <Property Name="ProductSalesID" Type="Int32" Nullable="false" />
+          <Property Name="ProductSalesID" Type="Int32" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="SalesID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
@@ -641,6 +630,20 @@
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.Product_ProductType_FK" FromRole="ProductType" ToRole="Product" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.ProductType_ModifiedBy_FK" FromRole="ProductType" ToRole="UserAccounts" />
+        </EntityType>
+        <EntityType Name="ProductXDetails">
+          <Key>
+            <PropertyRef Name="ProductDetailID" />
+          </Key>
+          <Property Name="ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="UnitCostPrice" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ThresholdQuantity" Type="Int32" />
+          <Property Name="Unit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Product" Relationship="IMS.ProductXDetails_UserAccounts_FK" FromRole="ProductXDetails" ToRole="Product" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -717,16 +720,6 @@
           <NavigationProperty Name="ProductSupplier" Relationship="Self.ProductSupplier_Sup_FK" FromRole="Suppliers" ToRole="ProductSupplier" />
           <NavigationProperty Name="SupplierDetail" Relationship="Self.SupplierDetail_Supplier_FK" FromRole="Suppliers" ToRole="SupplierDetail" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.Suppliers_ModifiedBy_FK" FromRole="Suppliers" ToRole="UserAccounts" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="UserAccounts">
           <Key>
@@ -1064,12 +1057,12 @@
           <EntitySet Name="ProductSales" EntityType="Self.ProductSales" />
           <EntitySet Name="ProductSupplier" EntityType="Self.ProductSupplier" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" />
+          <EntitySet Name="ProductXDetails" EntityType="Self.ProductXDetails" />
           <EntitySet Name="Sales" EntityType="Self.Sales" />
           <EntitySet Name="Stock" EntityType="Self.Stock" />
           <EntitySet Name="StockManagment" EntityType="Self.StockManagment" />
           <EntitySet Name="SupplierDetail" EntityType="Self.SupplierDetail" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" />
           <EntitySet Name="UserDetails" EntityType="Self.UserDetails" />
           <EntitySet Name="UserType" EntityType="Self.UserType" />
@@ -1165,63 +1158,37 @@
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="UserDetails" EntitySet="UserDetails" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IMSModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IMSModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="ProductXDetails_UserAccounts_FK" Association="IMS.ProductXDetails_UserAccounts_FK">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductXDetails" EntitySet="ProductXDetails" />
+          </AssociationSet>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
+        <Association Name="ProductXDetails_UserAccounts_FK">
+          <End Type="IMS.Product" Role="Product" Multiplicity="1" />
+          <End Type="IMS.ProductXDetails" Role="ProductXDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductXDetails">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="IMSModelStoreContainer" CdmEntityContainer="IMSEntities">
+        <EntityContainerMapping StorageEntityContainer="IMSStoreContainer" CdmEntityContainer="IMSEntities">
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="IMSModel.Product">
+            <EntityTypeMapping TypeName="IMS.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="PricePerItem" ColumnName="PricePerItem" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ThresholdQuantity" ColumnName="ThresholdQuantity" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="DateModified" ColumnName="DateModified" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
@@ -1229,7 +1196,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductSales">
-            <EntityTypeMapping TypeName="IMSModel.ProductSales">
+            <EntityTypeMapping TypeName="IMS.ProductSales">
               <MappingFragment StoreEntitySet="ProductSales">
                 <ScalarProperty Name="ProductSalesID" ColumnName="ProductSalesID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -1243,7 +1210,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductSupplier">
-            <EntityTypeMapping TypeName="IMSModel.ProductSupplier">
+            <EntityTypeMapping TypeName="IMS.ProductSupplier">
               <MappingFragment StoreEntitySet="ProductSupplier">
                 <ScalarProperty Name="ProductSupplierID" ColumnName="ProductSupplierID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -1255,7 +1222,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductType">
-            <EntityTypeMapping TypeName="IMSModel.ProductType">
+            <EntityTypeMapping TypeName="IMS.ProductType">
               <MappingFragment StoreEntitySet="ProductType">
                 <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
                 <ScalarProperty Name="ProductTypeName" ColumnName="ProductTypeName" />
@@ -1265,8 +1232,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProductXDetails">
+            <EntityTypeMapping TypeName="IMS.ProductXDetails">
+              <MappingFragment StoreEntitySet="ProductXDetails">
+                <ScalarProperty Name="ProductDetailID" ColumnName="ProductDetailID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="UnitCostPrice" ColumnName="UnitCostPrice" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="ThresholdQuantity" ColumnName="ThresholdQuantity" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Sales">
-            <EntityTypeMapping TypeName="IMSModel.Sales">
+            <EntityTypeMapping TypeName="IMS.Sales">
               <MappingFragment StoreEntitySet="Sales">
                 <ScalarProperty Name="SalesID" ColumnName="SalesID" />
                 <ScalarProperty Name="BillingDate" ColumnName="BillingDate" />
@@ -1279,7 +1260,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stock">
-            <EntityTypeMapping TypeName="IMSModel.Stock">
+            <EntityTypeMapping TypeName="IMS.Stock">
               <MappingFragment StoreEntitySet="Stock">
                 <ScalarProperty Name="StockID" ColumnName="StockID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -1291,7 +1272,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StockManagment">
-            <EntityTypeMapping TypeName="IMSModel.StockManagment">
+            <EntityTypeMapping TypeName="IMS.StockManagment">
               <MappingFragment StoreEntitySet="StockManagment">
                 <ScalarProperty Name="StockManagementID" ColumnName="StockManagementID" />
                 <ScalarProperty Name="StockID" ColumnName="StockID" />
@@ -1306,7 +1287,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierDetail">
-            <EntityTypeMapping TypeName="IMSModel.SupplierDetail">
+            <EntityTypeMapping TypeName="IMS.SupplierDetail">
               <MappingFragment StoreEntitySet="SupplierDetail">
                 <ScalarProperty Name="SupplierDetailID" ColumnName="SupplierDetailID" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
@@ -1320,7 +1301,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Suppliers">
-            <EntityTypeMapping TypeName="IMSModel.Suppliers">
+            <EntityTypeMapping TypeName="IMS.Suppliers">
               <MappingFragment StoreEntitySet="Suppliers">
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="SupplierEmail" ColumnName="SupplierEmail" />
@@ -1332,19 +1313,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="IMSModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserAccounts">
-            <EntityTypeMapping TypeName="IMSModel.UserAccounts">
+            <EntityTypeMapping TypeName="IMS.UserAccounts">
               <MappingFragment StoreEntitySet="UserAccounts">
                 <ScalarProperty Name="UserAccountID" ColumnName="UserAccountID" />
                 <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
@@ -1357,7 +1327,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserDetails">
-            <EntityTypeMapping TypeName="IMSModel.UserDetails">
+            <EntityTypeMapping TypeName="IMS.UserDetails">
               <MappingFragment StoreEntitySet="UserDetails">
                 <ScalarProperty Name="UserDetailD" ColumnName="UserDetailD" />
                 <ScalarProperty Name="UserAccountID" ColumnName="UserAccountID" />
@@ -1373,7 +1343,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserType">
-            <EntityTypeMapping TypeName="IMSModel.UserType">
+            <EntityTypeMapping TypeName="IMS.UserType">
               <MappingFragment StoreEntitySet="UserType">
                 <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
                 <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
@@ -1382,30 +1352,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMSModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMSModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMSModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMSModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMSModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMSModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMSModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMSModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMSModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -168,7 +168,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IMSContext.cs" />
     <Compile Include="Models\IMS.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -184,6 +183,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IMS.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\IMSContext.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
@@ -199,15 +199,12 @@
     <Compile Include="Models\ProductType.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductXDetails.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PurchaseInfo.cs" />
     <Compile Include="Models\QueryHelper.cs" />
     <Compile Include="Models\Sales.cs">
-      <DependentUpon>IMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>IMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Statistics.cs" />
@@ -221,9 +218,6 @@
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Suppliers.cs">
-      <DependentUpon>IMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserAccounts.cs">

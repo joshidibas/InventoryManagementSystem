@@ -4,43 +4,44 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b499938cb41149508b48265e42c74e19" Name="Diagram1">
-        <EntityTypeShape EntityType="IMSModel.Product" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.ProductSales" Width="1.5" PointX="9.75" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.ProductSupplier" Width="1.5" PointX="9.75" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.ProductType" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.Sales" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.Stock" Width="1.5" PointX="12.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.StockManagment" Width="1.5" PointX="15" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.SupplierDetail" Width="1.5" PointX="7.5" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.Suppliers" Width="1.5" PointX="5.25" PointY="24.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.UserAccounts" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.UserDetails" Width="1.5" PointX="5.25" PointY="28.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMSModel.UserType" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
-        <AssociationConnector Association="IMSModel.Product_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.Product_ProductType_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.ProductSales_Product_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.ProductSupplier_PT_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.Stock_Product_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.ProductSales_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.ProductSales_Sales_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.ProductSupplier_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.ProductSupplier_Sup_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.ProductType_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.Sales_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.Sales_UserAccounts_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.Stock_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.StockManagment_Stock_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.StockManagment_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.StockManagment_UA_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.SupplierDetail_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.SupplierDetail_Supplier_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.Suppliers_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.UserAccounts_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.UserAccounts_UserType_FKv1" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.UserDetails_ModifiedBy_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="IMSModel.UserDetails_UserAccounts_FK" ManuallyRouted="false" />
+      <Diagram DiagramId="6248fdec60ef4a0c802f6ec0085ac44f" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="IMS.Product" Width="1.5" PointX="7.5" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.ProductSales" Width="1.5" PointX="9.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.ProductSupplier" Width="1.5" PointX="9.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.ProductType" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.ProductXDetails" Width="1.5" PointX="7.875" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.Sales" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.Stock" Width="1.5" PointX="12.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.StockManagment" Width="1.5" PointX="15" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.SupplierDetail" Width="1.5" PointX="7.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.Suppliers" Width="1.5" PointX="5.25" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.UserAccounts" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.UserDetails" Width="1.5" PointX="5.25" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMS.UserType" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="IMS.Product_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.Product_ProductType_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.ProductSales_Product_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.ProductSupplier_PT_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.Stock_Product_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.ProductSales_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.ProductSales_Sales_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.ProductSupplier_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.ProductSupplier_Sup_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.ProductType_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.Sales_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.Sales_UserAccounts_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.Stock_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.StockManagment_Stock_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.StockManagment_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.StockManagment_UA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.SupplierDetail_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.SupplierDetail_Supplier_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.Suppliers_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.UserAccounts_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.UserAccounts_UserType_FKv1" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.UserDetails_ModifiedBy_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.UserDetails_UserAccounts_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="IMS.ProductXDetails_UserAccounts_FK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

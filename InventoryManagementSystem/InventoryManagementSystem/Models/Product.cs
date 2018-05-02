@@ -20,6 +20,7 @@ namespace InventoryManagementSystem.Models
             this.ProductSales = new HashSet<ProductSales>();
             this.ProductSupplier = new HashSet<ProductSupplier>();
             this.Stock = new HashSet<Stock>();
+            this.ProductXDetails = new HashSet<ProductXDetails>();
         }
     
         public int ProductID { get; set; }
@@ -27,7 +28,6 @@ namespace InventoryManagementSystem.Models
         public string ProductName { get; set; }
         public Nullable<int> PricePerItem { get; set; }
         public string Description { get; set; }
-        public Nullable<int> ThresholdQuantity { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
         public Nullable<System.DateTime> DateModified { get; set; }
         public int ModifiedBy { get; set; }
@@ -40,5 +40,7 @@ namespace InventoryManagementSystem.Models
         public virtual ICollection<ProductSupplier> ProductSupplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stock { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductXDetails> ProductXDetails { get; set; }
     }
 }
