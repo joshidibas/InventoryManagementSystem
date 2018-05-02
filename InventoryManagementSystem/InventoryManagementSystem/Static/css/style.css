@@ -1262,23 +1262,21 @@ color: #333;
 	
 	.subnavbar {
 	}
-    .subnavbar-inner {
-        height: 120px;
-    }
+    
         .subnavbar .container {		
 		width: auto;
 	}
-            .subnavbar .container > ul > li {
-             
-                border: 1px solid #d9d9d9;
-                border-top:none;
-            }
+           
 
 }
 
-@media(max-width:1200px){
+@media(max-width:1200px) and (min-width:767px){
     .subnavbar-inner {
         height: 120px;
+    }
+    .subnavbar .container > ul > li {
+        border: 1px solid #d9d9d9;
+        border-top: none;
     }
 }
 
