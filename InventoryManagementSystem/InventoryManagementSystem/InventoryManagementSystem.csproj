@@ -310,6 +310,8 @@
     <Content Include="Static\img\avatar-4.jpg" />
     <Content Include="Static\img\avatar-5.jpg" />
     <Content Include="Static\img\avatar-6.jpg" />
+    <Content Include="Static\img\back.JPG" />
+    <Content Include="Static\img\back2.jpg" />
     <Content Include="Static\img\bg.jpg" />
     <Content Include="Static\img\bg.png" />
     <Content Include="Static\img\favicon.ico" />
