@@ -25,10 +25,14 @@ namespace InventoryManagementSystem.Models
         public string SupplierEmail { get; set; }
         public string RegistrationNumber { get; set; }
         public string SupplierName { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductSupplier> ProductSupplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierDetail> SupplierDetail { get; set; }
+        public virtual UserAccounts UserAccounts { get; set; }
     }
 }

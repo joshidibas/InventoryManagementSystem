@@ -7,23 +7,29 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InventoryManagementSystem.Models;
+using InventoryManagementSystem.ViewModel;
 
 namespace InventoryManagementSystem.Controllers
 {
     public class SupplierDetailsController : Controller
     {
-        private InventoryMSEntities db = new InventoryMSEntities();
+        private IMSEntities db = new IMSEntities();
+
 
         // GET: SupplierDetails
         public ActionResult Index()
         {
-            var supplierDetail = db.SupplierDetail.Include(s => s.Suppliers);
+
+
+            var supplierDetail = db.SupplierDetail.Include(s => s.UserAccounts).Include(s => s.Suppliers);
             return View(supplierDetail.ToList());
         }
 
         // GET: SupplierDetails/Details/5
         public ActionResult Details(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +45,9 @@ namespace InventoryManagementSystem.Controllers
         // GET: SupplierDetails/Create
         public ActionResult Create()
         {
+
+
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email");
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierEmail");
             return View();
         }
@@ -48,7 +57,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SupplierDetailID,SupplierID,ContactNumber,Address,ContactPersonName")] SupplierDetail supplierDetail)
+        public ActionResult Create([Bind(Include = "SupplierDetailID,SupplierID,ContactNumber,Address,ContactPersonName,DateCreated,DateModified,ModifiedBy")] SupplierDetail supplierDetail)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +66,7 @@ namespace InventoryManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", supplierDetail.ModifiedBy);
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierEmail", supplierDetail.SupplierID);
             return View(supplierDetail);
         }
@@ -64,6 +74,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: SupplierDetails/Edit/5
         public ActionResult Edit(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -73,6 +85,7 @@ namespace InventoryManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", supplierDetail.ModifiedBy);
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierEmail", supplierDetail.SupplierID);
             return View(supplierDetail);
         }
@@ -82,7 +95,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SupplierDetailID,SupplierID,ContactNumber,Address,ContactPersonName")] SupplierDetail supplierDetail)
+        public ActionResult Edit([Bind(Include = "SupplierDetailID,SupplierID,ContactNumber,Address,ContactPersonName,DateCreated,DateModified,ModifiedBy")] SupplierDetail supplierDetail)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +103,7 @@ namespace InventoryManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", supplierDetail.ModifiedBy);
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierEmail", supplierDetail.SupplierID);
             return View(supplierDetail);
         }
@@ -97,6 +111,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: SupplierDetails/Delete/5
         public ActionResult Delete(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

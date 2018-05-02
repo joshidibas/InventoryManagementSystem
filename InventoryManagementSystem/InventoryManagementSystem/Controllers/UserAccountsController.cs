@@ -7,48 +7,70 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InventoryManagementSystem.Models;
+using InventoryManagementSystem.ViewModel;
 
 namespace InventoryManagementSystem.Controllers
 {
     public class UserAccountsController : Controller
     {
-        private InventoryMSEntities db = new InventoryMSEntities();
+        private IMSEntities db = new IMSEntities();
+
 
         // GET: UserAccounts
         public ActionResult Index()
         {
-            var userAccounts = db.UserAccounts.Include(u => u.UserType);
+
+
+            var userAccounts = db.UserAccounts.Include(u => u.UserAccounts2).Include(u => u.UserType).Where(u=>u.UserTypeID==3);
             return View(userAccounts.ToList());
         }
 
         // GET: UserAccounts/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Purchases(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserAccounts userAccounts = db.UserAccounts.Find(id);
-            if (userAccounts == null)
+            try
             {
-                return HttpNotFound();
+                var model = Models.PurchaseInfo.GetPurchaseInfo(db, id);
+                if (model != null)
+                {
+                    return View(model);
+                }
+                else
+                {
+                    throw new Exception("Selected customer hasn't purchased anything in the last 31 days");
+                }
             }
-            return View(userAccounts);
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+
+            }
+            return View();
         }
 
         // GET: UserAccounts/Create
         public ActionResult Create()
         {
-            ViewBag.UserTypeID = new SelectList(db.UserType, "UserTypeID", "UserTypeName");
+
+
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email");
+           
+            ViewBag.UserTypeID = new SelectList(db.UserType.Where(c => c.UserTypeID == 3), "UserTypeID", "UserTypeName");
             return View();
         }
-
+  
         // POST: UserAccounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserAccountID,UserTypeID,Email,Password")] UserAccounts userAccounts)
+        public ActionResult Create([Bind(Include = "UserAccountID,UserTypeID,Email,Password,DateCreated,DateModified,ModifiedBy")] UserAccounts userAccounts)
         {
             if (ModelState.IsValid)
             {
@@ -57,13 +79,16 @@ namespace InventoryManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserTypeID = new SelectList(db.UserType, "UserTypeID", "UserTypeName", userAccounts.UserTypeID);
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", userAccounts.ModifiedBy);
+            ViewBag.UserTypeID = new SelectList(db.UserType.Where(c => c.UserTypeID == 3), "UserTypeID", "UserTypeName", userAccounts.UserTypeID);
             return View(userAccounts);
         }
 
         // GET: UserAccounts/Edit/5
         public ActionResult Edit(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -73,7 +98,8 @@ namespace InventoryManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserTypeID = new SelectList(db.UserType, "UserTypeID", "UserTypeName", userAccounts.UserTypeID);
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", userAccounts.ModifiedBy);
+            ViewBag.UserTypeID = new SelectList(db.UserType.Where(c => c.UserTypeID == 3), "UserTypeID", "UserTypeName", userAccounts.UserTypeID);
             return View(userAccounts);
         }
 
@@ -82,7 +108,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserAccountID,UserTypeID,Email,Password")] UserAccounts userAccounts)
+        public ActionResult Edit([Bind(Include = "UserAccountID,UserTypeID,Email,Password,DateCreated,DateModified,ModifiedBy")] UserAccounts userAccounts)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +116,7 @@ namespace InventoryManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", userAccounts.ModifiedBy);
             ViewBag.UserTypeID = new SelectList(db.UserType, "UserTypeID", "UserTypeName", userAccounts.UserTypeID);
             return View(userAccounts);
         }
@@ -97,6 +124,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: UserAccounts/Delete/5
         public ActionResult Delete(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

@@ -1,0 +1,153 @@
+﻿@model InventoryManagementSystem.Models.UserAccounts
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+@section content{
+
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="content-inner">
+                <div class="row">
+                    @if (ViewBag.Error != null)
+                    {
+                        <div id="main-alert" class="alerts">
+                            <div class="alert alert-danger">
+                                @ViewBag.Error
+                            </div>
+                        </div>
+                    }
+                </div>
+                <section class="forms">
+                    <div class="container-fluid">
+                        @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="row">
+                                        <!-- Form Elements -->
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-header d-flex align-items-center">
+                                                    <h3 class="h4">Edit Profile</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    @Html.HiddenFor(model => model.UserAccountID)
+
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 form-control-label">User Type</label>
+                                                        <div class="col-sm-9">
+                                                            @Html.DropDownList("UserTypeID", null, htmlAttributes: new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.UserTypeID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="line"></div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 form-control-label">Email</label>
+                                                        <div class="col-sm-9">
+                                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="line"></div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 form-control-label">Password</label>
+                                                        <div class="col-sm-9">
+                                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @*@disabled = "disabled"*@ } })
+                                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="line"></div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 form-control-label">Date Created</label>
+                                                        <div class="col-sm-9">
+                                                            @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="line"></div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 form-control-label">Date Modified</label>
+                                                        <div class="col-sm-9">
+                                                            @Html.EditorFor(model => model.DateModified, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.DateModified, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="line"></div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 form-control-label">Modified By</label>
+                                                        <div class="col-sm-9">
+                                                            @Html.DropDownList("ModifiedBy", null, htmlAttributes: new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="line"></div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-4">
+                                                            <button type="submit" class="btn btn-secondary"><a href="/Profile" style="text-decoration:none;color:white">Cancel</a></button>
+                                                            <button type="submit" class="btn btn-primary" value="Save">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                         }
+                </div>
+                </section>
+
+            <section class="forms">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h3 class="h4">Change Password</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form @*action="/profile/Edit" method="post"*@>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">Password</label>
+                                            <div class="col-sm-9">
+                                                <input required="required" type="password" name="oldpassword" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">New Password</label>
+                                            <div class="col-sm-9">
+                                                <input required="required" type="password" name="newpassword" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">Confirm Password</label>
+                                            <div class="col-sm-9">
+                                                <input required="required" type="password" name="confirmpassword" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <button class="btn btn-secondary"><a href="/Profile" style="text-decoration:none;color:white">Cancel</a></button>
+                                                <input type="submit" id="reset-password" class="btn btn-primary" value="Update" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>        
+        </div>
+    </div>
+    </div>
+}
+

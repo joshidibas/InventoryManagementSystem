@@ -1,0 +1,86 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.Sales>
+
+@{
+    ViewBag.Title = "Billing";
+}
+
+@section content{
+
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="col-lg-12">
+                <section class="tables">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4">@Html.ActionLink("Create new Bill", "Create")</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Bill Number
+                                                        </th>
+                                                        <th>
+                                                            Billing Date
+                                                        </th>
+                                                        <th>
+                                                            Billed To
+                                                        </th>
+                                                        <th>
+                                                            Billing Amount
+                                                        </th>
+                                                        <th>
+                                                            Date Created
+                                                        </th>
+                                                        <th>
+                                                            Action
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.SalesID)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.BillingDate)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.UserAccounts1.Email)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.BillingAmount)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.DateCreated)
+                                                        </td>
+
+                                                        <td>
+
+                                                            <a href='@Url.Action("Edit", "Sales", new { id = item.SalesID })' class="btn btn-info">Edit</a>
+                                                            <a href='@Url.Action("Delete", "Sales" ,new { id = item.SalesID })' class="btn btn-danger">Delete</a>
+
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+}

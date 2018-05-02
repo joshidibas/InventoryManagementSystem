@@ -21,7 +21,11 @@ namespace InventoryManagementSystem.Models
         public Nullable<System.DateTime> BirthDate { get; set; }
         public string ContactNumber { get; set; }
         public string Address { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
         public virtual UserAccounts UserAccounts { get; set; }
+        public virtual UserAccounts UserAccounts1 { get; set; }
     }
 }

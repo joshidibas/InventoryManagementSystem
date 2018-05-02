@@ -1,0 +1,88 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.UserAccounts>
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+@section content{
+
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="col-lg-12">
+                <section class="tables">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4"> @Html.ActionLink("Edit Profile", "Edit", new { id =  Model.FirstOrDefault().UserAccountID })</h3>
+                                        
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            User Type
+                                                        </th>
+                                                        <th>
+                                                            Email
+                                                        </th>
+                                                        <th>
+                                                            Password
+                                                        </th>
+                                                        <th>
+                                                            Date Created
+                                                        </th>
+                                                        <th>
+                                                            Date Modified
+                                                        </th>
+                                                        <th>
+                                                            Modified By
+                                                        </th>
+                                                       
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    @foreach (var item in Model)
+                                                    {
+
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.UserType.UserTypeName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Email)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Password)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateCreated)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateModified)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.UserAccounts2.Email)
+                                                            </td>                                                           
+                                                        </tr>
+                                                    }
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+}

@@ -22,6 +22,8 @@ namespace InventoryManagementSystem.Models
     
         public int UserTypeID { get; set; }
         public string UserTypeName { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAccounts> UserAccounts { get; set; }

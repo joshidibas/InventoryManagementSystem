@@ -7,22 +7,28 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InventoryManagementSystem.Models;
+using InventoryManagementSystem.ViewModel;
 
 namespace InventoryManagementSystem.Controllers
 {
     public class UserTypesController : Controller
     {
-        private InventoryMSEntities db = new InventoryMSEntities();
+        private IMSEntities db = new IMSEntities();
+
 
         // GET: UserTypes
         public ActionResult Index()
         {
+
+
             return View(db.UserType.ToList());
         }
 
         // GET: UserTypes/Details/5
         public ActionResult Details(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -38,6 +44,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: UserTypes/Create
         public ActionResult Create()
         {
+
+
             return View();
         }
 
@@ -46,7 +54,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserTypeID,UserTypeName")] UserType userType)
+        public ActionResult Create([Bind(Include = "UserTypeID,UserTypeName,DateCreated,DateModified")] UserType userType)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +69,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: UserTypes/Edit/5
         public ActionResult Edit(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,7 +88,7 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserTypeID,UserTypeName")] UserType userType)
+        public ActionResult Edit([Bind(Include = "UserTypeID,UserTypeName,DateCreated,DateModified")] UserType userType)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +102,8 @@ namespace InventoryManagementSystem.Controllers
         // GET: UserTypes/Delete/5
         public ActionResult Delete(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

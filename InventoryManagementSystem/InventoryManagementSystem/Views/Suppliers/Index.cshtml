@@ -1,45 +1,86 @@
 ﻿@model IEnumerable<InventoryManagementSystem.Models.Suppliers>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Suppliers";
 }
 
-<h2>Index</h2>
+@section content{
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegistrationNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierName)
-        </th>
-        <th></th>
-    </tr>
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="col-lg-12">
+                <section class="tables">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4"> @Html.ActionLink("Add New Supplier", "Create")</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Supplier Name
+                                                        </th>
+                                                        <th>
+                                                            Email
+                                                        </th>
+                                                        <th>
+                                                            Registration
+                                                        </th>
+                                                        <th>
+                                                            Date Created
+                                                        </th>
+                                                        
+                                                        <th>
+                                                            Modified By
+                                                        </th>
+                                                        <th>
+                                                            Action
+                                                        </th>
+                                                    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegistrationNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SupplierID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SupplierID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SupplierID })
-        </td>
-    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.SupplierName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.SupplierEmail)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.RegistrationNumber)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateCreated)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.UserAccounts.Email)
+                                                            </td>
+                                                            <td>
+                                                                <a href='@Url.Action("Edit", "Suppliers" , new { id = item.SupplierID })' class="btn btn-info">Edit</a>
+                                                                <a href='@Url.Action("Delete", "Suppliers" ,new { id = item.SupplierID })' class="btn btn-danger">Delete</a>
+
+                                                           
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 }
-
-</table>

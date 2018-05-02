@@ -1,0 +1,90 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.UserAccounts>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Index</h2>
+@section content {
+   
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="col-lg-12">
+                <section class="tables">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4"> @Html.ActionLink("Add New User", "Create")</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.Email)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.Password)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.DateCreated)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.DateModified)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.UserAccounts2.Email)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.UserType.UserTypeName)
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Email)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Password)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateCreated)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateModified)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.UserAccounts2.Email)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.UserType.UserTypeName)
+                                                            </td>
+                                                            <td>
+                                                                <a href='@Url.Action("Edit", "Users" , new { id = item.UserAccountID })' class="btn btn-primary">Edit</a>
+                                                                <a href='@Url.Action("Delete", "Users" , new { id = item.UserAccountID })' class="btn btn-danger">Delete</a>
+
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+}

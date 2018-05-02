@@ -1,0 +1,75 @@
+﻿@model InventoryManagementSystem.Models.Sales
+
+@{
+    ViewBag.Title = "Billing";
+}
+
+@section content{
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Sales</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BillingDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BillingDate)
+            </dd>
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.BillingAmount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAmount)
+                </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateCreated)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateModified)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserAccounts.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserAccounts.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserAccounts1.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserAccounts1.Email)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+}
+

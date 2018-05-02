@@ -151,67 +151,89 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductDetailsController.cs" />
+    <Compile Include="Controllers\ProductSalesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\ProductTypesController.cs" />
+    <Compile Include="Controllers\ProductTypeController.cs" />
+    <Compile Include="Controllers\ProductSuppliersController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\StockManagmentsController.cs" />
     <Compile Include="Controllers\SupplierDetailsController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="Controllers\UserDetailsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Context.cs">
+    <Compile Include="Models\IMSContext.cs" />
+    <Compile Include="Models\IMS.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>IMS.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
+    <Compile Include="Models\IMS.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
+    <Compile Include="Models\IMS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>IMS.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductDetails.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ProductCount.cs" />
+    <Compile Include="Models\ProductDetails.cs" />
+    <Compile Include="Models\ProductList.cs" />
     <Compile Include="Models\ProductSales.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductSupplier.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductType.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PurchaseInfo.cs" />
+    <Compile Include="Models\QueryHelper.cs" />
     <Compile Include="Models\Sales.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Statistics.cs" />
     <Compile Include="Models\Stock.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StockManagment.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SupplierDetail.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Suppliers.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserAccounts.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserDetails.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserType.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -222,27 +244,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\IMS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>IMS.edmx</DependentUpon>
+      <LastGenOutput>IMS.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\IMS.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>IMS.edmx</DependentUpon>
+      <LastGenOutput>IMS.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\IMS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>IMS.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\IMS.edmx.diagram">
+      <DependentUpon>IMS.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -255,6 +277,429 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Static\css\base-admin-responsive.css" />
+    <Content Include="Static\css\bootstrap-responsive.min.css" />
+    <Content Include="Static\css\bootstrap.css" />
+    <Content Include="Static\css\bootstrap.min.css" />
+    <Content Include="Static\css\custom.css" />
+    <Content Include="Static\css\font-awesome-ie7.css" />
+    <Content Include="Static\css\font-awesome-ie7.min.css" />
+    <Content Include="Static\css\font-awesome.css" />
+    <Content Include="Static\css\font-awesome.min.css" />
+    <Content Include="Static\css\fontastic.css" />
+    <Content Include="Static\css\pages\dashboard.css" />
+    <Content Include="Static\css\pages\faq.css" />
+    <Content Include="Static\css\pages\plans.css" />
+    <Content Include="Static\css\pages\reports.css" />
+    <Content Include="Static\css\pages\signin.css" />
+    <Content Include="Static\css\style.blue.css" />
+    <Content Include="Static\css\style.css" />
+    <Content Include="Static\css\style.default.css" />
+    <Content Include="Static\css\style.green.css" />
+    <Content Include="Static\css\style.pink.css" />
+    <Content Include="Static\css\style.red.css" />
+    <Content Include="Static\css\style.sea.css" />
+    <Content Include="Static\css\style.violet.css" />
+    <Content Include="Static\fonts\dashboard.svg" />
+    <Content Include="Static\icons-reference\fonts\dashboard.svg" />
+    <Content Include="Static\icons-reference\icons-reference.html" />
+    <Content Include="Static\icons-reference\styles.css" />
+    <Content Include="Static\img\avatar-1.jpg" />
+    <Content Include="Static\img\avatar-2.jpg" />
+    <Content Include="Static\img\avatar-3.jpg" />
+    <Content Include="Static\img\avatar-4.jpg" />
+    <Content Include="Static\img\avatar-5.jpg" />
+    <Content Include="Static\img\avatar-6.jpg" />
+    <Content Include="Static\img\bg.jpg" />
+    <Content Include="Static\img\bg.png" />
+    <Content Include="Static\img\favicon.ico" />
+    <Content Include="Static\img\flags\16\AD.png" />
+    <Content Include="Static\img\flags\16\AE.png" />
+    <Content Include="Static\img\flags\16\AF.png" />
+    <Content Include="Static\img\flags\16\AG.png" />
+    <Content Include="Static\img\flags\16\AI.png" />
+    <Content Include="Static\img\flags\16\AL.png" />
+    <Content Include="Static\img\flags\16\AM.png" />
+    <Content Include="Static\img\flags\16\AN.png" />
+    <Content Include="Static\img\flags\16\AO.png" />
+    <Content Include="Static\img\flags\16\AQ.png" />
+    <Content Include="Static\img\flags\16\AR.png" />
+    <Content Include="Static\img\flags\16\AS.png" />
+    <Content Include="Static\img\flags\16\AT.png" />
+    <Content Include="Static\img\flags\16\AU.png" />
+    <Content Include="Static\img\flags\16\AW.png" />
+    <Content Include="Static\img\flags\16\AX.png" />
+    <Content Include="Static\img\flags\16\AZ.png" />
+    <Content Include="Static\img\flags\16\BA.png" />
+    <Content Include="Static\img\flags\16\BB.png" />
+    <Content Include="Static\img\flags\16\BD.png" />
+    <Content Include="Static\img\flags\16\BE.png" />
+    <Content Include="Static\img\flags\16\BF.png" />
+    <Content Include="Static\img\flags\16\BG.png" />
+    <Content Include="Static\img\flags\16\BH.png" />
+    <Content Include="Static\img\flags\16\BI.png" />
+    <Content Include="Static\img\flags\16\BJ.png" />
+    <Content Include="Static\img\flags\16\BL.png" />
+    <Content Include="Static\img\flags\16\BM.png" />
+    <Content Include="Static\img\flags\16\BN.png" />
+    <Content Include="Static\img\flags\16\BO.png" />
+    <Content Include="Static\img\flags\16\BR.png" />
+    <Content Include="Static\img\flags\16\BS.png" />
+    <Content Include="Static\img\flags\16\BT.png" />
+    <Content Include="Static\img\flags\16\BW.png" />
+    <Content Include="Static\img\flags\16\BY.png" />
+    <Content Include="Static\img\flags\16\BZ.png" />
+    <Content Include="Static\img\flags\16\CA.png" />
+    <Content Include="Static\img\flags\16\CC.png" />
+    <Content Include="Static\img\flags\16\CD.png" />
+    <Content Include="Static\img\flags\16\CF.png" />
+    <Content Include="Static\img\flags\16\CG.png" />
+    <Content Include="Static\img\flags\16\CH.png" />
+    <Content Include="Static\img\flags\16\CI.png" />
+    <Content Include="Static\img\flags\16\CK.png" />
+    <Content Include="Static\img\flags\16\CL.png" />
+    <Content Include="Static\img\flags\16\CM.png" />
+    <Content Include="Static\img\flags\16\CN.png" />
+    <Content Include="Static\img\flags\16\CO.png" />
+    <Content Include="Static\img\flags\16\CR.png" />
+    <Content Include="Static\img\flags\16\CT.png" />
+    <Content Include="Static\img\flags\16\CU.png" />
+    <Content Include="Static\img\flags\16\CV.png" />
+    <Content Include="Static\img\flags\16\CW.png" />
+    <Content Include="Static\img\flags\16\CX.png" />
+    <Content Include="Static\img\flags\16\CY.png" />
+    <Content Include="Static\img\flags\16\CZ.png" />
+    <Content Include="Static\img\flags\16\DE.png" />
+    <Content Include="Static\img\flags\16\DJ.png" />
+    <Content Include="Static\img\flags\16\DK.png" />
+    <Content Include="Static\img\flags\16\DM.png" />
+    <Content Include="Static\img\flags\16\DO.png" />
+    <Content Include="Static\img\flags\16\DZ.png" />
+    <Content Include="Static\img\flags\16\EC.png" />
+    <Content Include="Static\img\flags\16\EE.png" />
+    <Content Include="Static\img\flags\16\EG.png" />
+    <Content Include="Static\img\flags\16\EH.png" />
+    <Content Include="Static\img\flags\16\ER.png" />
+    <Content Include="Static\img\flags\16\ES.png" />
+    <Content Include="Static\img\flags\16\ET.png" />
+    <Content Include="Static\img\flags\16\EU.png" />
+    <Content Include="Static\img\flags\16\FI.png" />
+    <Content Include="Static\img\flags\16\FJ.png" />
+    <Content Include="Static\img\flags\16\FK.png" />
+    <Content Include="Static\img\flags\16\FM.png" />
+    <Content Include="Static\img\flags\16\FO.png" />
+    <Content Include="Static\img\flags\16\FR.png" />
+    <Content Include="Static\img\flags\16\GA.png" />
+    <Content Include="Static\img\flags\16\GB.png" />
+    <Content Include="Static\img\flags\16\GD.png" />
+    <Content Include="Static\img\flags\16\GE.png" />
+    <Content Include="Static\img\flags\16\GG.png" />
+    <Content Include="Static\img\flags\16\GH.png" />
+    <Content Include="Static\img\flags\16\GI.png" />
+    <Content Include="Static\img\flags\16\GL.png" />
+    <Content Include="Static\img\flags\16\GM.png" />
+    <Content Include="Static\img\flags\16\GN.png" />
+    <Content Include="Static\img\flags\16\GQ.png" />
+    <Content Include="Static\img\flags\16\GR.png" />
+    <Content Include="Static\img\flags\16\GS.png" />
+    <Content Include="Static\img\flags\16\GT.png" />
+    <Content Include="Static\img\flags\16\GU.png" />
+    <Content Include="Static\img\flags\16\GW.png" />
+    <Content Include="Static\img\flags\16\GY.png" />
+    <Content Include="Static\img\flags\16\HK.png" />
+    <Content Include="Static\img\flags\16\HN.png" />
+    <Content Include="Static\img\flags\16\HR.png" />
+    <Content Include="Static\img\flags\16\HT.png" />
+    <Content Include="Static\img\flags\16\HU.png" />
+    <Content Include="Static\img\flags\16\IC.png" />
+    <Content Include="Static\img\flags\16\ID.png" />
+    <Content Include="Static\img\flags\16\IE.png" />
+    <Content Include="Static\img\flags\16\IL.png" />
+    <Content Include="Static\img\flags\16\IM.png" />
+    <Content Include="Static\img\flags\16\IN.png" />
+    <Content Include="Static\img\flags\16\IQ.png" />
+    <Content Include="Static\img\flags\16\IR.png" />
+    <Content Include="Static\img\flags\16\IS.png" />
+    <Content Include="Static\img\flags\16\IT.png" />
+    <Content Include="Static\img\flags\16\JE.png" />
+    <Content Include="Static\img\flags\16\JM.png" />
+    <Content Include="Static\img\flags\16\JO.png" />
+    <Content Include="Static\img\flags\16\JP.png" />
+    <Content Include="Static\img\flags\16\KE.png" />
+    <Content Include="Static\img\flags\16\KG.png" />
+    <Content Include="Static\img\flags\16\KH.png" />
+    <Content Include="Static\img\flags\16\KI.png" />
+    <Content Include="Static\img\flags\16\KM.png" />
+    <Content Include="Static\img\flags\16\KN.png" />
+    <Content Include="Static\img\flags\16\KP.png" />
+    <Content Include="Static\img\flags\16\KR.png" />
+    <Content Include="Static\img\flags\16\KW.png" />
+    <Content Include="Static\img\flags\16\KY.png" />
+    <Content Include="Static\img\flags\16\KZ.png" />
+    <Content Include="Static\img\flags\16\LA.png" />
+    <Content Include="Static\img\flags\16\LB.png" />
+    <Content Include="Static\img\flags\16\LC.png" />
+    <Content Include="Static\img\flags\16\LI.png" />
+    <Content Include="Static\img\flags\16\LK.png" />
+    <Content Include="Static\img\flags\16\LR.png" />
+    <Content Include="Static\img\flags\16\LS.png" />
+    <Content Include="Static\img\flags\16\LT.png" />
+    <Content Include="Static\img\flags\16\LU.png" />
+    <Content Include="Static\img\flags\16\LV.png" />
+    <Content Include="Static\img\flags\16\LY.png" />
+    <Content Include="Static\img\flags\16\MA.png" />
+    <Content Include="Static\img\flags\16\MC.png" />
+    <Content Include="Static\img\flags\16\MD.png" />
+    <Content Include="Static\img\flags\16\ME.png" />
+    <Content Include="Static\img\flags\16\MF.png" />
+    <Content Include="Static\img\flags\16\MG.png" />
+    <Content Include="Static\img\flags\16\MH.png" />
+    <Content Include="Static\img\flags\16\MK.png" />
+    <Content Include="Static\img\flags\16\ML.png" />
+    <Content Include="Static\img\flags\16\MM.png" />
+    <Content Include="Static\img\flags\16\MN.png" />
+    <Content Include="Static\img\flags\16\MO.png" />
+    <Content Include="Static\img\flags\16\MP.png" />
+    <Content Include="Static\img\flags\16\MQ.png" />
+    <Content Include="Static\img\flags\16\MR.png" />
+    <Content Include="Static\img\flags\16\MS.png" />
+    <Content Include="Static\img\flags\16\MT.png" />
+    <Content Include="Static\img\flags\16\MU.png" />
+    <Content Include="Static\img\flags\16\MV.png" />
+    <Content Include="Static\img\flags\16\MW.png" />
+    <Content Include="Static\img\flags\16\MX.png" />
+    <Content Include="Static\img\flags\16\MY.png" />
+    <Content Include="Static\img\flags\16\MZ.png" />
+    <Content Include="Static\img\flags\16\NA.png" />
+    <Content Include="Static\img\flags\16\NC.png" />
+    <Content Include="Static\img\flags\16\NE.png" />
+    <Content Include="Static\img\flags\16\NF.png" />
+    <Content Include="Static\img\flags\16\NG.png" />
+    <Content Include="Static\img\flags\16\NI.png" />
+    <Content Include="Static\img\flags\16\NL.png" />
+    <Content Include="Static\img\flags\16\NO.png" />
+    <Content Include="Static\img\flags\16\NP.png" />
+    <Content Include="Static\img\flags\16\NR.png" />
+    <Content Include="Static\img\flags\16\NU.png" />
+    <Content Include="Static\img\flags\16\NZ.png" />
+    <Content Include="Static\img\flags\16\OM.png" />
+    <Content Include="Static\img\flags\16\PA.png" />
+    <Content Include="Static\img\flags\16\PE.png" />
+    <Content Include="Static\img\flags\16\PF.png" />
+    <Content Include="Static\img\flags\16\PG.png" />
+    <Content Include="Static\img\flags\16\PH.png" />
+    <Content Include="Static\img\flags\16\PK.png" />
+    <Content Include="Static\img\flags\16\PL.png" />
+    <Content Include="Static\img\flags\16\PN.png" />
+    <Content Include="Static\img\flags\16\PR.png" />
+    <Content Include="Static\img\flags\16\PS.png" />
+    <Content Include="Static\img\flags\16\PT.png" />
+    <Content Include="Static\img\flags\16\PW.png" />
+    <Content Include="Static\img\flags\16\PY.png" />
+    <Content Include="Static\img\flags\16\QA.png" />
+    <Content Include="Static\img\flags\16\RE.png" />
+    <Content Include="Static\img\flags\16\RO.png" />
+    <Content Include="Static\img\flags\16\RS.png" />
+    <Content Include="Static\img\flags\16\RU.png" />
+    <Content Include="Static\img\flags\16\RW.png" />
+    <Content Include="Static\img\flags\16\SA.png" />
+    <Content Include="Static\img\flags\16\SB.png" />
+    <Content Include="Static\img\flags\16\SC.png" />
+    <Content Include="Static\img\flags\16\SD.png" />
+    <Content Include="Static\img\flags\16\SE.png" />
+    <Content Include="Static\img\flags\16\SG.png" />
+    <Content Include="Static\img\flags\16\SH.png" />
+    <Content Include="Static\img\flags\16\SI.png" />
+    <Content Include="Static\img\flags\16\SK.png" />
+    <Content Include="Static\img\flags\16\SL.png" />
+    <Content Include="Static\img\flags\16\SM.png" />
+    <Content Include="Static\img\flags\16\SN.png" />
+    <Content Include="Static\img\flags\16\SO.png" />
+    <Content Include="Static\img\flags\16\SR.png" />
+    <Content Include="Static\img\flags\16\SS.png" />
+    <Content Include="Static\img\flags\16\ST.png" />
+    <Content Include="Static\img\flags\16\SV.png" />
+    <Content Include="Static\img\flags\16\SX.png" />
+    <Content Include="Static\img\flags\16\SY.png" />
+    <Content Include="Static\img\flags\16\SZ.png" />
+    <Content Include="Static\img\flags\16\TC.png" />
+    <Content Include="Static\img\flags\16\TD.png" />
+    <Content Include="Static\img\flags\16\TF.png" />
+    <Content Include="Static\img\flags\16\TG.png" />
+    <Content Include="Static\img\flags\16\TH.png" />
+    <Content Include="Static\img\flags\16\TJ.png" />
+    <Content Include="Static\img\flags\16\TK.png" />
+    <Content Include="Static\img\flags\16\TL.png" />
+    <Content Include="Static\img\flags\16\TM.png" />
+    <Content Include="Static\img\flags\16\TN.png" />
+    <Content Include="Static\img\flags\16\TO.png" />
+    <Content Include="Static\img\flags\16\TR.png" />
+    <Content Include="Static\img\flags\16\TT.png" />
+    <Content Include="Static\img\flags\16\TV.png" />
+    <Content Include="Static\img\flags\16\TW.png" />
+    <Content Include="Static\img\flags\16\TZ.png" />
+    <Content Include="Static\img\flags\16\UA.png" />
+    <Content Include="Static\img\flags\16\UG.png" />
+    <Content Include="Static\img\flags\16\US.png" />
+    <Content Include="Static\img\flags\16\UY.png" />
+    <Content Include="Static\img\flags\16\UZ.png" />
+    <Content Include="Static\img\flags\16\VA.png" />
+    <Content Include="Static\img\flags\16\VC.png" />
+    <Content Include="Static\img\flags\16\VE.png" />
+    <Content Include="Static\img\flags\16\VG.png" />
+    <Content Include="Static\img\flags\16\VI.png" />
+    <Content Include="Static\img\flags\16\VN.png" />
+    <Content Include="Static\img\flags\16\VU.png" />
+    <Content Include="Static\img\flags\16\WF.png" />
+    <Content Include="Static\img\flags\16\WS.png" />
+    <Content Include="Static\img\flags\16\YE.png" />
+    <Content Include="Static\img\flags\16\YT.png" />
+    <Content Include="Static\img\flags\16\ZA.png" />
+    <Content Include="Static\img\flags\16\ZM.png" />
+    <Content Include="Static\img\flags\16\ZW.png" />
+    <Content Include="Static\img\flags\16\_abkhazia.png" />
+    <Content Include="Static\img\flags\16\_basque-country.png" />
+    <Content Include="Static\img\flags\16\_british-antarctic-territory.png" />
+    <Content Include="Static\img\flags\16\_commonwealth.png" />
+    <Content Include="Static\img\flags\16\_england.png" />
+    <Content Include="Static\img\flags\16\_gosquared.png" />
+    <Content Include="Static\img\flags\16\_kosovo.png" />
+    <Content Include="Static\img\flags\16\_mars.png" />
+    <Content Include="Static\img\flags\16\_nagorno-karabakh.png" />
+    <Content Include="Static\img\flags\16\_nato.png" />
+    <Content Include="Static\img\flags\16\_northern-cyprus.png" />
+    <Content Include="Static\img\flags\16\_olympics.png" />
+    <Content Include="Static\img\flags\16\_red-cross.png" />
+    <Content Include="Static\img\flags\16\_scotland.png" />
+    <Content Include="Static\img\flags\16\_somaliland.png" />
+    <Content Include="Static\img\flags\16\_south-ossetia.png" />
+    <Content Include="Static\img\flags\16\_united-nations.png" />
+    <Content Include="Static\img\flags\16\_unknown.png" />
+    <Content Include="Static\img\flags\16\_wales.png" />
+    <Content Include="Static\img\map-close.png" />
+    <Content Include="Static\img\map-marker-blue.png" />
+    <Content Include="Static\img\map-marker-default.png" />
+    <Content Include="Static\img\map-marker-pink.png" />
+    <Content Include="Static\img\map-marker-red.png" />
+    <Content Include="Static\img\map-marker-sea.png" />
+    <Content Include="Static\img\map-marker-violet.png" />
+    <Content Include="Static\img\map-marker.png" />
+    <Content Include="Static\img\mockup1.jpg" />
+    <Content Include="Static\img\mockup2.jpg" />
+    <Content Include="Static\img\mockup3.jpg" />
+    <Content Include="Static\img\mockup4.jpg" />
+    <Content Include="Static\img\mockup5.jpg" />
+    <Content Include="Static\img\mockup6.jpg" />
+    <Content Include="Static\img\mockup7.jpg" />
+    <Content Include="Static\img\project-1.jpg" />
+    <Content Include="Static\img\project-2.jpg" />
+    <Content Include="Static\img\project-3.jpg" />
+    <Content Include="Static\img\project-4.jpg" />
+    <Content Include="Static\img\template-mac.png" />
+    <Content Include="Static\js\charts-custom.js" />
+    <Content Include="Static\js\charts-home.js" />
+    <Content Include="Static\js\front.js" />
+    <Content Include="Static\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Static\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Static\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Static\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Static\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Static\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Static\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Static\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Static\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Static\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Static\vendor\chart.js\Chart.bundle.js" />
+    <Content Include="Static\vendor\chart.js\Chart.bundle.min.js" />
+    <Content Include="Static\vendor\chart.js\Chart.js" />
+    <Content Include="Static\vendor\chart.js\Chart.min.js" />
+    <Content Include="Static\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Static\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Static\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Static\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Static\vendor\jquery-validation\additional-methods.js" />
+    <Content Include="Static\vendor\jquery-validation\jquery.validate.js" />
+    <Content Include="Static\vendor\jquery-validation\jquery.validate.min.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ar.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_az.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_bg.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_bn_BD.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ca.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_cs.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_da.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_de.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_el.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_es.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_es_AR.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_es_PE.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_et.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_eu.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_fa.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_fi.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_fr.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ge.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_gl.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_he.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_hr.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_hu.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_hy_AM.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_id.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_is.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_it.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ja.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ka.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_kk.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ko.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_lt.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_lv.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_mk.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_my.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_nl.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_no.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_pl.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_pt_BR.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_pt_PT.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ro.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ru.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_sd.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_si.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_sk.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_sl.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_sr.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_sr_lat.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_sv.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_th.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_tj.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_tr.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_uk.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_ur.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_vi.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_zh.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\messages_zh_TW.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\methods_de.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\methods_es_CL.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\methods_fi.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\methods_nl.js" />
+    <Content Include="Static\vendor\jquery-validation\localization\methods_pt.js" />
+    <Content Include="Static\vendor\jquery.cookie\jquery.cookie.js" />
+    <Content Include="Static\vendor\jquery.cookie\MIT-LICENSE.txt" />
+    <Content Include="Static\vendor\jquery\core.js" />
+    <Content Include="Static\vendor\jquery\jquery.js" />
+    <Content Include="Static\vendor\jquery\jquery.min.js" />
+    <Content Include="Static\vendor\jquery\jquery.slim.js" />
+    <Content Include="Static\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Static\vendor\popper.js\esm\popper-utils.js" />
+    <Content Include="Static\vendor\popper.js\esm\popper-utils.min.js" />
+    <Content Include="Static\vendor\popper.js\esm\popper.js" />
+    <Content Include="Static\vendor\popper.js\esm\popper.min.js" />
+    <Content Include="Static\vendor\popper.js\popper-utils.js" />
+    <Content Include="Static\vendor\popper.js\popper-utils.min.js" />
+    <Content Include="Static\vendor\popper.js\popper.js" />
+    <Content Include="Static\vendor\popper.js\popper.min.js" />
+    <Content Include="Static\vendor\popper.js\umd\popper-utils.js" />
+    <Content Include="Static\vendor\popper.js\umd\popper-utils.min.js" />
+    <Content Include="Static\vendor\popper.js\umd\popper.js" />
+    <Content Include="Static\vendor\popper.js\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -262,56 +707,89 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Static\data\addresses.json" />
+    <Content Include="Static\data\countries.json" />
+    <Content Include="Static\fonts\dashboard.eot" />
+    <Content Include="Static\fonts\dashboard.ttf" />
+    <Content Include="Static\fonts\dashboard.woff" />
+    <Content Include="Static\icons-reference\fonts\dashboard.eot" />
+    <Content Include="Static\icons-reference\fonts\dashboard.ttf" />
+    <Content Include="Static\icons-reference\fonts\dashboard.woff" />
+    <Content Include="Static\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Static\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Static\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Static\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Static\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Static\vendor\jquery.cookie\component.json" />
+    <Content Include="Static\vendor\jquery.cookie\cookie.jquery.json" />
+    <Content Include="Views\Home\Authentication.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\UserTypes\Create.cshtml" />
-    <Content Include="Views\UserTypes\Delete.cshtml" />
-    <Content Include="Views\UserTypes\Details.cshtml" />
-    <Content Include="Views\UserTypes\Edit.cshtml" />
-    <Content Include="Views\UserTypes\Index.cshtml" />
-    <Content Include="Views\ProductTypes\Create.cshtml" />
-    <Content Include="Views\ProductTypes\Delete.cshtml" />
-    <Content Include="Views\ProductTypes\Details.cshtml" />
-    <Content Include="Views\ProductTypes\Edit.cshtml" />
-    <Content Include="Views\ProductTypes\Index.cshtml" />
+    <Content Include="Views\ProductSales\Create.cshtml" />
+    <Content Include="Views\ProductSales\Delete.cshtml" />
+    <Content Include="Views\ProductSales\Edit.cshtml" />
+    <Content Include="Views\ProductSales\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\UserAccounts\Create.cshtml" />
-    <Content Include="Views\UserAccounts\Delete.cshtml" />
-    <Content Include="Views\UserAccounts\Details.cshtml" />
-    <Content Include="Views\UserAccounts\Edit.cshtml" />
-    <Content Include="Views\UserAccounts\Index.cshtml" />
-    <Content Include="Views\UserDetails\Create.cshtml" />
-    <Content Include="Views\UserDetails\Delete.cshtml" />
-    <Content Include="Views\UserDetails\Details.cshtml" />
-    <Content Include="Views\UserDetails\Edit.cshtml" />
-    <Content Include="Views\UserDetails\Index.cshtml" />
-    <Content Include="Views\ProductDetails\Create.cshtml" />
-    <Content Include="Views\ProductDetails\Delete.cshtml" />
-    <Content Include="Views\ProductDetails\Details.cshtml" />
-    <Content Include="Views\ProductDetails\Edit.cshtml" />
-    <Content Include="Views\ProductDetails\Index.cshtml" />
-    <Content Include="Views\Suppliers\Create.cshtml" />
-    <Content Include="Views\Suppliers\Delete.cshtml" />
-    <Content Include="Views\Suppliers\Details.cshtml" />
-    <Content Include="Views\Suppliers\Edit.cshtml" />
-    <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\ProductSuppliers\Create.cshtml" />
+    <Content Include="Views\ProductSuppliers\Delete.cshtml" />
+    <Content Include="Views\ProductSuppliers\Edit.cshtml" />
+    <Content Include="Views\ProductSuppliers\Index.cshtml" />
+    <Content Include="Views\ProductType\Create.cshtml" />
+    <Content Include="Views\ProductType\Delete.cshtml" />
+    <Content Include="Views\ProductType\Edit.cshtml" />
+    <Content Include="Views\ProductType\Index.cshtml" />
+    <Content Include="Views\ProductType\Products.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Sales\Create.cshtml" />
+    <Content Include="Views\Sales\Delete.cshtml" />
+    <Content Include="Views\Sales\Edit.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\StockManagments\Create.cshtml" />
+    <Content Include="Views\StockManagments\Delete.cshtml" />
+    <Content Include="Views\StockManagments\Edit.cshtml" />
+    <Content Include="Views\StockManagments\Index.cshtml" />
+    <Content Include="Views\Stock\Create.cshtml" />
+    <Content Include="Views\Stock\Delete.cshtml" />
+    <Content Include="Views\Stock\Edit.cshtml" />
+    <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\SupplierDetails\Create.cshtml" />
     <Content Include="Views\SupplierDetails\Delete.cshtml" />
-    <Content Include="Views\SupplierDetails\Details.cshtml" />
     <Content Include="Views\SupplierDetails\Edit.cshtml" />
     <Content Include="Views\SupplierDetails\Index.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\UserAccounts\Create.cshtml" />
+    <Content Include="Views\UserAccounts\Delete.cshtml" />
+    <Content Include="Views\UserAccounts\Edit.cshtml" />
+    <Content Include="Views\UserAccounts\Index.cshtml" />
+    <Content Include="Views\UserAccounts\Purchases.cshtml" />
+    <Content Include="Views\UserDetails\Create.cshtml" />
+    <Content Include="Views\UserDetails\Delete.cshtml" />
+    <Content Include="Views\UserDetails\Edit.cshtml" />
+    <Content Include="Views\UserDetails\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\UserTypes\Create.cshtml" />
+    <Content Include="Views\UserTypes\Delete.cshtml" />
+    <Content Include="Views\UserTypes\Edit.cshtml" />
+    <Content Include="Views\UserTypes\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Static\vendor\font-awesome\less\" />
+    <Folder Include="Static\vendor\font-awesome\scss\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

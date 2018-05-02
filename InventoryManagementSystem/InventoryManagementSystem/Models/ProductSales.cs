@@ -14,13 +14,17 @@ namespace InventoryManagementSystem.Models
     
     public partial class ProductSales
     {
-        public Nullable<int> ProductSalesID { get; set; }
+        public int ProductSalesID { get; set; }
         public int ProductID { get; set; }
         public int SalesID { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> Discount { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public int ModifiedBy { get; set; }
     
         public virtual Product Product { get; set; }
+        public virtual UserAccounts UserAccounts { get; set; }
         public virtual Sales Sales { get; set; }
     }
 }
