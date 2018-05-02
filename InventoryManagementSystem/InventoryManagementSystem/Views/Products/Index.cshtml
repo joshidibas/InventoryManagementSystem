@@ -26,7 +26,7 @@
                                                         <th>Description</th>
                                                         <th>Date Created</th>
                                                         <th>Product Type</th>
-                                                        <th>Threshold Quantity</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -48,9 +48,7 @@
                                                         <td>
                                                             @Html.DisplayFor(modelItem => item.ProductType.ProductTypeName)
                                                         </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.ThresholdQuantity)
-                                                        </td>
+                                                        
                                                         <td>
                                                             <a href='@Url.Action("Details", null , new { id = item.ProductID })' class="btn btn-primary">Details</a>
                                                             <a href='@Url.Action("Edit", "Products" , new { id = item.ProductID })' class="btn btn-info">Edit</a>
