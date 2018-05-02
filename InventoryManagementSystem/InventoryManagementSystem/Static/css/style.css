@@ -1276,6 +1276,11 @@ color: #333;
 
 }
 
+@media(min-width:1200px){
+    .subnavbar-inner {
+        height: 120px;
+    }
+}
 
 
 
