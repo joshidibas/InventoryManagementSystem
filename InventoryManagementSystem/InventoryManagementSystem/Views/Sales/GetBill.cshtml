@@ -1,11 +1,21 @@
-﻿@model IEnumerable<InventoryManagementSystem.Models.Sales>
+﻿@model InventoryManagementSystem.Models.Billing
 
 @{
     ViewBag.Title = "Billing";
 }
 
 @section content{
-
+    <div class="row">
+        @if (ViewBag.Error != null)
+        {
+            <div id="main-alert" class="alerts">
+                <div class="alert alert-danger">
+                    @ViewBag.Error
+                </div>
+            </div>
+        }
+    </div>
+  
     <div class="page">
         <div class="page-content d-flex align-items-stretch">
             <div class="col-lg-12">
@@ -15,7 +25,7 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4">@Html.ActionLink("Create new Bill", "Create")</h3>
+                                        <h3 class="h4">Details</h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -23,56 +33,55 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Bill Number
+                                                            Sales ID
                                                         </th>
                                                         <th>
-                                                            Billing Date
+                                                            Product Name
                                                         </th>
                                                         <th>
-                                                            Billed To
+                                                            Price Per Item
                                                         </th>
                                                         <th>
-                                                            Billing Amount
+                                                            Quantity
                                                         </th>
                                                         <th>
-                                                            Date Created
+                                                            BillingDate
                                                         </th>
-                                                        <th>
-                                                            Action
-                                                        </th>
+                                                       
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (var item in Model)
-                                                    {
+                                                  
                                                     <tr>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.SalesID)
+                                                           @Html.DisplayFor(model => model.SalesID)
                                                         </td>
+
+
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.BillingDate)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.UserAccounts1.Email)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.BillingAmount)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.DateCreated)
+                                                            @Html.DisplayFor(model => model.ProductName)
                                                         </td>
 
                                                         <td>
+                                                            @Html.DisplayFor(model => model.PricePerItem)
+                                                        </td>
 
-                                                            <a href='@Url.Action("Edit", "Sales", new { id = item.SalesID })' class="btn btn-info">Edit</a>
-                                                            <a href='@Url.Action("Delete", "Sales" ,new { id = item.SalesID })' class="btn btn-danger">Delete</a>
-                                                            <a href='@Url.Action("GetBill", null , new { id = item.SalesID })' class="btn btn-primary">Details</a>
 
+
+                                                        <td>
+                                                            @Html.DisplayFor(model => model.Quantity)
+                                                        </td>
+
+
+
+                                                        <td>
+                                                            @Html.DisplayFor(model => model.BillingDate)
                                                         </td>
                                                     </tr>
-                                                    }
+
                                                 </tbody>
                                             </table>
+                                            <p> @Html.ActionLink("Back to List", "Index")</p>
                                         </div>
                                     </div>
                                 </div>
@@ -84,3 +93,4 @@
         </div>
     </div>
 }
+

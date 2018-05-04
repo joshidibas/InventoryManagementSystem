@@ -155,6 +155,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\ProductSuppliersController.cs" />
+    <Compile Include="Controllers\ProductXDetailsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\StockController.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Billing.cs" />
     <Compile Include="Models\IMS.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -781,6 +783,12 @@
     <Content Include="Views\UserTypes\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\ProductXDetails\Create.cshtml" />
+    <Content Include="Views\ProductXDetails\Delete.cshtml" />
+    <Content Include="Views\ProductXDetails\Details.cshtml" />
+    <Content Include="Views\ProductXDetails\Edit.cshtml" />
+    <Content Include="Views\ProductXDetails\Index.cshtml" />
+    <Content Include="Views\Sales\GetBill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

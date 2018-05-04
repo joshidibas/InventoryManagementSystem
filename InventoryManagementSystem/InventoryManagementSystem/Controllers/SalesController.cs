@@ -34,12 +34,24 @@ namespace InventoryManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sales sales = db.Sales.Find(id);
-            if (sales == null)
+            try
             {
-                return HttpNotFound();
+                var model = Models.Billing.GetBill(db, id).FirstOrDefault();
+                if (model != null)
+                {
+                    return View(model);
+                }
+                else
+                {
+                    throw new Exception("Something went wrong!!!");
+                }
             }
-            return View(sales);
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+
+            }
+            return View();
         }
 
         // GET: Sales/Create

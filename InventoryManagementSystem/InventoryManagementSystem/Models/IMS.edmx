@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductTypeID" Type="int" Nullable="false" />
           <Property Name="ProductName" Type="varchar" MaxLength="100" />
           <Property Name="PricePerItem" Type="int" />
@@ -23,7 +23,7 @@
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="SalesID" />
           </Key>
-          <Property Name="ProductSalesID" Type="int" />
+          <Property Name="ProductSalesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="SalesID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
@@ -37,7 +37,7 @@
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="SupplierID" />
           </Key>
-          <Property Name="ProductSupplierID" Type="int" Nullable="false" />
+          <Property Name="ProductSupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="SupplierID" Type="int" Nullable="false" />
           <Property Name="DateCreated" Type="date" />
@@ -48,7 +48,7 @@
           <Key>
             <PropertyRef Name="ProductTypeID" />
           </Key>
-          <Property Name="ProductTypeID" Type="int" Nullable="false" />
+          <Property Name="ProductTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductTypeName" Type="varchar" MaxLength="100" />
           <Property Name="DateCreated" Type="date" />
           <Property Name="DateModified" Type="date" />
@@ -58,7 +58,7 @@
           <Key>
             <PropertyRef Name="ProductDetailID" />
           </Key>
-          <Property Name="ProductDetailID" Type="int" Nullable="false" />
+          <Property Name="ProductDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="UnitCostPrice" Type="int" />
           <Property Name="Location" Type="varchar" MaxLength="50" />
@@ -71,7 +71,7 @@
           <Key>
             <PropertyRef Name="SalesID" />
           </Key>
-          <Property Name="SalesID" Type="int" Nullable="false" />
+          <Property Name="SalesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BillingDate" Type="date" />
           <Property Name="BillingAmount" Type="int" />
           <Property Name="UserAccountID" Type="int" Nullable="false" />
@@ -83,7 +83,7 @@
           <Key>
             <PropertyRef Name="StockID" />
           </Key>
-          <Property Name="StockID" Type="int" Nullable="false" />
+          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="QuantityRemaining" Type="int" />
           <Property Name="DateCreated" Type="date" />
@@ -94,7 +94,7 @@
           <Key>
             <PropertyRef Name="StockManagementID" />
           </Key>
-          <Property Name="StockManagementID" Type="int" Nullable="false" />
+          <Property Name="StockManagementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StockID" Type="int" Nullable="false" />
           <Property Name="OperationType" Type="varchar" MaxLength="100" />
           <Property Name="OperationDate" Type="date" />
@@ -108,7 +108,7 @@
           <Key>
             <PropertyRef Name="SupplierDetailID" />
           </Key>
-          <Property Name="SupplierDetailID" Type="int" Nullable="false" />
+          <Property Name="SupplierDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SupplierID" Type="int" Nullable="false" />
           <Property Name="ContactNumber" Type="varchar" MaxLength="100" />
           <Property Name="Address" Type="varchar" MaxLength="100" />
@@ -121,7 +121,7 @@
           <Key>
             <PropertyRef Name="SupplierID" />
           </Key>
-          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SupplierEmail" Type="varchar" MaxLength="100" />
           <Property Name="RegistrationNumber" Type="varchar" MaxLength="100" />
           <Property Name="SupplierName" Type="varchar" MaxLength="100" />
@@ -145,7 +145,7 @@
           <Key>
             <PropertyRef Name="UserDetailD" />
           </Key>
-          <Property Name="UserDetailD" Type="int" Nullable="false" />
+          <Property Name="UserDetailD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserAccountID" Type="int" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="100" />
           <Property Name="LastName" Type="varchar" MaxLength="100" />
@@ -592,7 +592,7 @@
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="SalesID" />
           </Key>
-          <Property Name="ProductSalesID" Type="Int32" />
+          <Property Name="ProductSalesID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="SalesID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
