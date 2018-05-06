@@ -36,15 +36,12 @@ namespace InventoryManagementSystem.Controllers
             }
             try
             {
+                var GetBill = Billing.GetBill(db, id).ToList();
+                ViewBag.GetBill = GetBill;
                 var model = Models.Billing.GetBill(db, id).FirstOrDefault();
-                if (model != null)
-                {
-                    return View(model);
-                }
-                else
-                {
-                    throw new Exception("Something went wrong!!!");
-                }
+                return View(model);
+                
+                
             }
             catch (Exception ex)
             {

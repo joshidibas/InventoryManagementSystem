@@ -18,7 +18,6 @@ namespace InventoryManagementSystem.Models
         public int ProductID { get; set; }
         public int SalesID { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<int> Discount { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
         public Nullable<System.DateTime> DateModified { get; set; }
         public int ModifiedBy { get; set; }

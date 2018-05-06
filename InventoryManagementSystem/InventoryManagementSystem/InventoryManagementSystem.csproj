@@ -722,10 +722,6 @@
     <Content Include="Static\vendor\jquery.cookie\cookie.jquery.json" />
     <Content Include="Views\Home\Authentication.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ProductSales\Create.cshtml" />
-    <Content Include="Views\ProductSales\Delete.cshtml" />
-    <Content Include="Views\ProductSales\Edit.cshtml" />
-    <Content Include="Views\ProductSales\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -788,7 +784,11 @@
     <Content Include="Views\ProductXDetails\Details.cshtml" />
     <Content Include="Views\ProductXDetails\Edit.cshtml" />
     <Content Include="Views\ProductXDetails\Index.cshtml" />
-    <Content Include="Views\Sales\GetBill.cshtml" />
+    <Content Include="Views\Sales\Details.cshtml" />
+    <Content Include="Views\ProductSales\Create.cshtml" />
+    <Content Include="Views\ProductSales\Delete.cshtml" />
+    <Content Include="Views\ProductSales\Edit.cshtml" />
+    <Content Include="Views\ProductSales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

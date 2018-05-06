@@ -10,14 +10,14 @@ using System.Web.Mvc;
 
 namespace InventoryManagementSystem.ViewModel
 {
-    public class QueryHelper{
+    public class QueryHelper
+    {
         public static Task<int> UpdateBillingAmount(IMSEntities db, int? BillingAmount, int SalesID)
         {
-            //Dictionary<string, object> dict = new Dictionary<string, object>();
-            //dict.Add("ProjectID", new KeyValuePair<string, object>("string", ProjectID));
 
             SqlParameter amountParam = new SqlParameter("BillingAmount", BillingAmount);
             SqlParameter salesParam = new SqlParameter("SalesID", SalesID);
+            if(BillingAmount == null) { 
             try
             {
                 string objs = @"
@@ -27,12 +27,32 @@ namespace InventoryManagementSystem.ViewModel
                 var result = db.Database.ExecuteSqlCommandAsync(objs, parameters);
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return null;
             }
+            }
+            else {
+                try
+                {
+                    string objs = @"
+                UPDATE Sales SET BillingAmount = BillingAmount + @BillingAmount
+                WHERE SalesID = @SalesID";
+                    object[] parameters = new object[] { amountParam, salesParam };
+                    var result = db.Database.ExecuteSqlCommandAsync(objs, parameters);
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    return null;
+                }
+            }
         }
+    
+            
+        
 
         public static IEnumerable<Product> GetProductPrice (IMSEntities db, int ProductID)
         {

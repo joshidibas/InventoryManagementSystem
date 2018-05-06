@@ -1,0 +1,128 @@
+﻿@model InventoryManagementSystem.Models.Billing
+
+@{
+    ViewBag.Title = "Billing";
+}
+
+@section content{
+    <div class="row">
+        @if (ViewBag.Error != null)
+        {
+            <div id="main-alert" class="alerts">
+                <div class="alert alert-danger">
+                    @ViewBag.Error
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="col-lg-12">
+                <section class="tables">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4">Details</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>
+                                                            SalesID
+                                                        </th>
+                                                        <th>
+                                                            Total
+                                                        </th>
+                                                        <th>
+                                                            Date
+                                                        </th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                   
+                                                        <tr>
+
+                                                            <td>
+                                                                @Html.DisplayFor(model => model.SalesID)
+                                                            </td>
+
+                                                            <td>
+                                                                @Html.DisplayFor(model => model.BillingAmount)
+                                                            </td>
+
+
+
+                                                            <td>
+                                                                @Html.DisplayFor(model => model.BillingDate)
+                                                            </td>
+
+
+                                                        </tr>
+                                                    
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>
+                                                            Product Name
+                                                        </th>
+                                                        <th>
+                                                            Price Per Item
+                                                        </th>
+                                                        <th>
+                                                            Quantity
+                                                        </th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in ViewBag.GetBill)
+                                                    {
+                                                        <tr>
+
+                                                            <td>
+                                                                @item.ProductName
+                                                            </td>
+
+                                                            <td>
+                                                                @item.PricePerItem
+                                                            </td>
+
+
+
+                                                            <td>
+                                                                @item.Quantity
+                                                            </td>
+
+
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            <p> @Html.ActionLink("Back to List", "Index")</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+}
+

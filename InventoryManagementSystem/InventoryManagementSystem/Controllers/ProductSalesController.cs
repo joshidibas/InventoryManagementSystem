@@ -117,7 +117,7 @@ namespace InventoryManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductSales productSales = db.ProductSales.Find(id);
+            ProductSales productSales = db.ProductSales.FirstOrDefault();
             if (productSales == null)
             {
                 return HttpNotFound();
@@ -156,7 +156,7 @@ namespace InventoryManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductSales productSales = db.ProductSales.Find(id);
+            ProductSales productSales = db.ProductSales.FirstOrDefault();
             if (productSales == null)
             {
                 return HttpNotFound();
@@ -169,7 +169,7 @@ namespace InventoryManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ProductSales productSales = db.ProductSales.Find(id);
+            ProductSales productSales = db.ProductSales.FirstOrDefault();
             db.ProductSales.Remove(productSales);
             db.SaveChanges();
             return RedirectToAction("Index");

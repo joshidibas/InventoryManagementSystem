@@ -32,6 +32,7 @@ namespace InventoryManagementSystem.Models
         public virtual DbSet<ProductXDetails> ProductXDetails { get; set; }
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Stock> Stock { get; set; }
+        public virtual DbSet<Billing> Billing { get; set; }
         public virtual DbSet<StockManagment> StockManagment { get; set; }
         public virtual DbSet<SupplierDetail> SupplierDetail { get; set; }
         public virtual DbSet<Suppliers> Suppliers { get; set; }

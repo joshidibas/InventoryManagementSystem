@@ -19,8 +19,8 @@ namespace InventoryManagementSystem.Models
         {
             this.ProductSales = new HashSet<ProductSales>();
             this.ProductSupplier = new HashSet<ProductSupplier>();
-            this.Stock = new HashSet<Stock>();
             this.ProductXDetails = new HashSet<ProductXDetails>();
+            this.Stock = new HashSet<Stock>();
         }
     
         public int ProductID { get; set; }
@@ -39,8 +39,8 @@ namespace InventoryManagementSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductSupplier> ProductSupplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stock> Stock { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductXDetails> ProductXDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Stock> Stock { get; set; }
     }
 }

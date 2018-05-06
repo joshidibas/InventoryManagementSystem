@@ -27,7 +27,6 @@
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="SalesID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="Discount" Type="int" />
           <Property Name="DateCreated" Type="date" />
           <Property Name="DateModified" Type="date" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
@@ -572,7 +571,7 @@
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductTypeID" Type="Int32" Nullable="false" />
           <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="PricePerItem" Type="Int32" />
@@ -584,19 +583,18 @@
           <NavigationProperty Name="ProductType" Relationship="Self.Product_ProductType_FK" FromRole="Product" ToRole="ProductType" />
           <NavigationProperty Name="ProductSales" Relationship="Self.ProductSales_Product_FK" FromRole="Product" ToRole="ProductSales" />
           <NavigationProperty Name="ProductSupplier" Relationship="Self.ProductSupplier_PT_FK" FromRole="Product" ToRole="ProductSupplier" />
+          <NavigationProperty Name="ProductXDetails" Relationship="Self.ProductXDetails_UserAccounts_FK" FromRole="Product" ToRole="ProductXDetails" />
           <NavigationProperty Name="Stock" Relationship="Self.Stock_Product_FK" FromRole="Product" ToRole="Stock" />
-          <NavigationProperty Name="ProductXDetails" Relationship="IMS.ProductXDetails_UserAccounts_FK" FromRole="Product" ToRole="ProductXDetails" />
         </EntityType>
         <EntityType Name="ProductSales">
           <Key>
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="SalesID" />
           </Key>
-          <Property Name="ProductSalesID" Type="Int32" Nullable="false" />
+          <Property Name="ProductSalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="SalesID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="Discount" Type="Int32" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
           <Property Name="DateModified" Type="DateTime" Precision="0" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
@@ -609,7 +607,7 @@
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="SupplierID" />
           </Key>
-          <Property Name="ProductSupplierID" Type="Int32" Nullable="false" />
+          <Property Name="ProductSupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="SupplierID" Type="Int32" Nullable="false" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
@@ -623,7 +621,7 @@
           <Key>
             <PropertyRef Name="ProductTypeID" />
           </Key>
-          <Property Name="ProductTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ProductTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
           <Property Name="DateModified" Type="DateTime" Precision="0" />
@@ -635,7 +633,7 @@
           <Key>
             <PropertyRef Name="ProductDetailID" />
           </Key>
-          <Property Name="ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="ProductDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="UnitCostPrice" Type="Int32" />
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -643,13 +641,13 @@
           <Property Name="Unit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
           <Property Name="DateModified" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Product" Relationship="IMS.ProductXDetails_UserAccounts_FK" FromRole="ProductXDetails" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.ProductXDetails_UserAccounts_FK" FromRole="ProductXDetails" ToRole="Product" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
             <PropertyRef Name="SalesID" />
           </Key>
-          <Property Name="SalesID" Type="Int32" Nullable="false" />
+          <Property Name="SalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BillingDate" Type="DateTime" Precision="0" />
           <Property Name="BillingAmount" Type="Int32" />
           <Property Name="UserAccountID" Type="Int32" Nullable="false" />
@@ -664,7 +662,7 @@
           <Key>
             <PropertyRef Name="StockID" />
           </Key>
-          <Property Name="StockID" Type="Int32" Nullable="false" />
+          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="QuantityRemaining" Type="Int32" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
@@ -678,7 +676,7 @@
           <Key>
             <PropertyRef Name="StockManagementID" />
           </Key>
-          <Property Name="StockManagementID" Type="Int32" Nullable="false" />
+          <Property Name="StockManagementID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StockID" Type="Int32" Nullable="false" />
           <Property Name="OperationType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="OperationDate" Type="DateTime" Precision="0" />
@@ -695,7 +693,7 @@
           <Key>
             <PropertyRef Name="SupplierDetailID" />
           </Key>
-          <Property Name="SupplierDetailID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SupplierID" Type="Int32" Nullable="false" />
           <Property Name="ContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -710,7 +708,7 @@
           <Key>
             <PropertyRef Name="SupplierID" />
           </Key>
-          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SupplierEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RegistrationNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -725,7 +723,7 @@
           <Key>
             <PropertyRef Name="UserAccountID" />
           </Key>
-          <Property Name="UserAccountID" Type="Int32" Nullable="false" />
+          <Property Name="UserAccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserTypeID" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -753,7 +751,7 @@
           <Key>
             <PropertyRef Name="UserDetailD" />
           </Key>
-          <Property Name="UserDetailD" Type="Int32" Nullable="false" />
+          <Property Name="UserDetailD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserAccountID" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -770,7 +768,7 @@
           <Key>
             <PropertyRef Name="UserTypeID" />
           </Key>
-          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
           <Property Name="DateModified" Type="DateTime" Precision="0" />
@@ -820,6 +818,18 @@
               <PropertyRef Name="ProductID" />
             </Principal>
             <Dependent Role="ProductSupplier">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductXDetails_UserAccounts_FK">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductXDetails" Type="Self.ProductXDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductXDetails">
               <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1082,6 +1092,10 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductSupplier" EntitySet="ProductSupplier" />
           </AssociationSet>
+          <AssociationSet Name="ProductXDetails_UserAccounts_FK" Association="Self.ProductXDetails_UserAccounts_FK">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductXDetails" EntitySet="ProductXDetails" />
+          </AssociationSet>
           <AssociationSet Name="Stock_Product_FK" Association="Self.Stock_Product_FK">
             <End Role="Product" EntitySet="Product" />
             <End Role="Stock" EntitySet="Stock" />
@@ -1158,23 +1172,7 @@
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="UserDetails" EntitySet="UserDetails" />
           </AssociationSet>
-          <AssociationSet Name="ProductXDetails_UserAccounts_FK" Association="IMS.ProductXDetails_UserAccounts_FK">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductXDetails" EntitySet="ProductXDetails" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="ProductXDetails_UserAccounts_FK">
-          <End Type="IMS.Product" Role="Product" Multiplicity="1" />
-          <End Type="IMS.ProductXDetails" Role="ProductXDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="ProductXDetails">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1202,7 +1200,6 @@
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="SalesID" ColumnName="SalesID" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="DateModified" ColumnName="DateModified" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
