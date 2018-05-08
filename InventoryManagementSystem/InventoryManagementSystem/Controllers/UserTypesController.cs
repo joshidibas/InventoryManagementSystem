@@ -58,6 +58,14 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (userType.DateCreated == null)
+                {
+                    userType.DateCreated = DateTime.Now;
+                }
+                if (userType.DateModified == null)
+                {
+                    userType.DateModified = DateTime.Now;
+                }
                 db.UserType.Add(userType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -92,6 +100,7 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                userType.DateModified = DateTime.Now;
                 db.Entry(userType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -60,6 +60,15 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (suppliers.DateCreated == null)
+                {
+                    suppliers.DateCreated = DateTime.Now;
+                }
+                if (suppliers.DateModified == null)
+                {
+                    suppliers.DateModified = DateTime.Now;
+                }
+                suppliers.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Suppliers.Add(suppliers);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -96,6 +105,8 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                suppliers.DateModified = DateTime.Now;
+                suppliers.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Entry(suppliers).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

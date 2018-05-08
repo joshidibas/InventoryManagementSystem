@@ -47,7 +47,7 @@
                                                         <th>
                                                             Description
                                                         </th>
-                                                        
+
                                                         <th>
                                                             Date Added
                                                         </th>
@@ -57,7 +57,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                  
+
                                                     <tr>
                                                         <td>
                                                             @Html.DisplayFor(model => model.ProductID)
@@ -84,7 +84,7 @@
                                                             @Html.DisplayFor(model => model.Description)
                                                         </td>
 
-                                                       
+
 
                                                         <td>
                                                             @Html.DisplayFor(model => model.DateCreated)
@@ -101,6 +101,9 @@
                                             </table>
                                             <p> @Html.ActionLink("Back to List", "Index")</p>
                                         </div>
+                                    </div>
+                                    <div class="card-header d-flex align-items-center">
+                                        <h4 style="text-align:end"> <a href="/ProductXDetails/Index"><u>View All Details</u></a></h4>
                                     </div>
                                 </div>
                             </div>

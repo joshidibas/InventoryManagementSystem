@@ -52,6 +52,14 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (productXDetails.DateCreated == null)
+                {
+                    productXDetails.DateCreated = DateTime.Now;
+                }
+                if (productXDetails.DateModified == null)
+                {
+                    productXDetails.DateModified = DateTime.Now;
+                }
                 db.ProductXDetails.Add(productXDetails);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,6 +94,7 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                productXDetails.DateModified = DateTime.Now;
                 db.Entry(productXDetails).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

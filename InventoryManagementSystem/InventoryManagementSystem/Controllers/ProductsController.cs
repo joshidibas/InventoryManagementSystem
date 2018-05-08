@@ -74,7 +74,15 @@ namespace InventoryManagementSystem.Controllers
         public ActionResult Create([Bind(Include = "ProductID,ProductTypeID,ProductName,PricePerItem,Description,ThresholdQuantity,DateCreated,DateModified,ModifiedBy")] Product product)
         {
             if (ModelState.IsValid)
-            {
+            {   
+                if(product.DateCreated == null) { 
+                product.DateCreated = DateTime.Now;
+                }
+                if(product.DateModified == null)
+                {
+                    product.DateModified = DateTime.Now;
+                }
+                product.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Product.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -113,6 +121,8 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                product.DateModified = DateTime.Now;
+                product.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

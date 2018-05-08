@@ -307,9 +307,13 @@ textarea {
 */
 
 .footer {
-	margin-top: 0;
-	
-	border-top: 1px solid #292929;
+    margin-top: 0;
+    position:fixed;
+    bottom:0;
+    width: 100%;
+    background: #2f333e;
+    color: #fff;
+    border-top: 1px solid #292929;
 }
 
 .footer-inner {
@@ -341,7 +345,7 @@ textarea {
 	
 	width: auto;
 	
-	margin-bottom: 2em;
+	margin-bottom: 3em;
 		
 	overflow: hidden;
 }

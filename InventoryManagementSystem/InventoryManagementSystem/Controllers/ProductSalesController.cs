@@ -68,7 +68,15 @@ namespace InventoryManagementSystem.Controllers
                     //if quantity remaining >= quantity request
                     if (quantityRemaning >= quantityRequest)
                     {
-
+                        if (productSales.DateCreated == null)
+                        {
+                            productSales.DateCreated = DateTime.Now;
+                        }
+                        if (productSales.DateModified == null)
+                        {
+                            productSales.DateModified = DateTime.Now;
+                        }
+                        productSales.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                         db.ProductSales.Add(productSales);
                         db.SaveChanges();
 
@@ -137,6 +145,8 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                productSales.DateModified = DateTime.Now;
+                productSales.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Entry(productSales).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

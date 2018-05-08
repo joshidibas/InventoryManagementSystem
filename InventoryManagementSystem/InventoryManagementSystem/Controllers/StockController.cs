@@ -61,6 +61,15 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (stock.DateCreated == null)
+                {
+                    stock.DateCreated = DateTime.Now;
+                }
+                if (stock.DateModified == null)
+                {
+                    stock.DateModified = DateTime.Now;
+                }
+                stock.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Stock.Add(stock);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -99,6 +108,8 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                stock.DateModified = DateTime.Now;
+                stock.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Entry(stock).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

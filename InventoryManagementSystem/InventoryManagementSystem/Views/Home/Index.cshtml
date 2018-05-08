@@ -5,5 +5,280 @@
 
 
 @section content{
-    
+    <section class="dashboard-counts no-padding-bottom">
+        <div class="container-fluid">
+            @if (ViewBag.RunningOutOfStock != null)
+            {
+                <div id="main-alert" class="alerts">
+                    <div class="alert alert-warning">
+                        <p><b>Items running out of stock:</b></p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="color:black">Product Name</th>
+                                    <th style="color:darkblue">Quantity Remaining</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.RunningOutOfStock)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.ProductName
+                                        </td>
+
+                                        <td class="pull-right">
+                                            @item.QuantityRemaining
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </section>
+    <!-- Dashboard Header Section    -->
+    <section class="dashboard-header">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="statistics col-lg-4 col-12">
+                    <div class="statistic d-flex align-items-center bg-white has-shadow">
+                        <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
+                        <div class="text"><strong>@ViewBag.TotalProducts</strong><br><small>Products</small></div>
+                    </div>
+                    <div class="statistic d-flex align-items-center bg-white has-shadow">
+                        <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
+                        <div class="text"><strong>@ViewBag.TotalCustomers</strong><br><small>Customers</small></div>
+                    </div>
+                    <div class="statistic d-flex align-items-center bg-white has-shadow">
+                        <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
+                        <div class="text"><strong>@ViewBag.TotalSuppliers</strong><br><small>Suppliers</small></div>
+                    </div>
+                    <div class="statistic d-flex align-items-center bg-white has-shadow">
+                        <div class="icon bg-green"><i class="fa fa-line-chart"></i></div>
+                        <div class="text"><strong>@ViewBag.TotalSales</strong><br><small>Total Sales</small></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-12">
+                    <div class="overdue card">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">Running out of stock</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Product Name
+                                                <th>
+                                                    Quantity Remaining
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.RunningOutOfStock)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @item.ProductName
+                                                    </td>
+
+                                                    <td>
+                                                        @item.QuantityRemaining
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart col-lg-4 col-12">
+                    <div class="overdue card">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">Out of stock</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Product Name
+                                                <th>
+                                                    Quantity Remaining
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.ItemsOutOfStock)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @item.ProductName
+                                                    </td>
+
+                                                    <td>
+                                                        @item.QuantityRemaining
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-top:50px;">
+
+                <div class="col-lg-4 col-12">
+                    <div class="overdue card">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">Not sold in 100 days</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Product Name
+                                                <th>
+                                                    Last Sold
+                                                </th>
+                                                <th>
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.ItemsNotSoldLongTime)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @item.ProductName
+                                                    </td>
+
+                                                    <td>
+                                                        @item.LastSold
+                                                    </td>
+                                                    <td>
+                                                        <a href='@Url.Action("Delete", "Products" , new { id = item.ProductID })' class="btn btn-danger">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-12">
+                    <div class="overdue card">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">Inactive Customers</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Customer ID
+                                                <th>
+                                                    Email
+                                                </th>
+                                                <th>
+                                                    Last Purchase
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.InactiveCustomerList)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @item.UserAccountID
+                                                    </td>
+
+                                                    <td>
+                                                        @item.Email
+                                                    </td>
+                                                    <td>
+                                                        @item.LastPurchase
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart col-lg-4 col-12">
+                    <div class="overdue card">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">Not sold in 31 days</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Product Name
+                                                <th>
+                                                    Last Sold
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.ItemsNotSold31Days)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @item.ProductName
+                                                    </td>
+
+                                                    <td>
+                                                        @item.LastSold
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 }

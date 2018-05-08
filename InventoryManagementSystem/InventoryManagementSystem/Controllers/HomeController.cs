@@ -18,104 +18,104 @@ namespace InventoryManagementSystem.Controllers
                 int UserAccountID = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 if (UserAccountID != 0)
                 {
-                    //using (IMSEntities db = new IMSEntities())
-                    //{
-                    //    var RunningOutOfStock = ProductList.GetItemsRunningOutOfStock(db).ToList();
-                    //    ViewBag.RunningOutOfStock = RunningOutOfStock;
+                    using (IMSEntities db = new IMSEntities())
+                    {
+                        var RunningOutOfStock = ProductList.GetItemsRunningOutOfStock(db).ToList();
+                        ViewBag.RunningOutOfStock = RunningOutOfStock;
 
-                    //    var ItemsNotSoldLongTime = ProductList.GetItemsNotSoldLongTime(db).ToList();
-                    //    ViewBag.ItemsNotSoldLongTime = ItemsNotSoldLongTime;
+                        var ItemsNotSoldLongTime = ProductList.GetItemsNotSoldLongTime(db).ToList();
+                        ViewBag.ItemsNotSoldLongTime = ItemsNotSoldLongTime;
 
-                    //    var ItemsOutOfStock = ProductList.GetItemsOutOfStock(db).ToList();
-                    //    ViewBag.ItemsOutOfStock = ItemsOutOfStock;
+                        var ItemsOutOfStock = ProductList.GetItemsOutOfStock(db).ToList();
+                        ViewBag.ItemsOutOfStock = ItemsOutOfStock;
 
-                    //    var InactiveCustomerList = PurchaseInfo.InactiveCustomerList(db).ToList();
-                    //    ViewBag.InactiveCustomerList = InactiveCustomerList;
+                        var InactiveCustomerList = PurchaseInfo.InactiveCustomerList(db).ToList();
+                        ViewBag.InactiveCustomerList = InactiveCustomerList;
 
-                    //    var ItemsNotSold31Days = ProductList.GetItemsNotSold31Days(db).ToList();
-                    //    ViewBag.ItemsNotSold31Days = ItemsNotSold31Days;
+                        var ItemsNotSold31Days = ProductList.GetItemsNotSold31Days(db).ToList();
+                        ViewBag.ItemsNotSold31Days = ItemsNotSold31Days;
 
-                    //    var TotalBalwa = ProductCount.CountBalwa(db).FirstOrDefault();
-                    //    if (TotalBalwa != null)
-                    //    {
-                    //        ViewBag.TotalBalwa = TotalBalwa.Total;
-                    //    }
-                    //    else
-                    //    {
-                    //        ViewBag.TotalBalwa = 0;
-                    //    }
+                        //    var TotalBalwa = ProductCount.CountBalwa(db).FirstOrDefault();
+                        //    if (TotalBalwa != null)
+                        //    {
+                        //        ViewBag.TotalBalwa = TotalBalwa.Total;
+                        //    }
+                        //    else
+                        //    {
+                        //        ViewBag.TotalBalwa = 0;
+                        //    }
 
-                    //    var TotalGitti = ProductCount.CountGitti(db).FirstOrDefault();
-                    //    if (TotalGitti != null)
-                    //    {
-                    //        ViewBag.TotalGitti = TotalGitti.Total;
-                    //    }
-                    //    else
-                    //    {
-                    //        ViewBag.TotalGitti = 0;
-                    //    }
+                        //    var TotalGitti = ProductCount.CountGitti(db).FirstOrDefault();
+                        //    if (TotalGitti != null)
+                        //    {
+                        //        ViewBag.TotalGitti = TotalGitti.Total;
+                        //    }
+                        //    else
+                        //    {
+                        //        ViewBag.TotalGitti = 0;
+                        //    }
 
-                    //    var TotalCement = ProductCount.CountCement(db).FirstOrDefault();
-                    //    if (TotalCement != null)
-                    //    {
-                    //        ViewBag.TotalCement = TotalCement.Total;
-                    //    }
-                    //    else
-                    //    {
-                    //        ViewBag.TotalCement = 0;
-                    //    }
+                        //    var TotalCement = ProductCount.CountCement(db).FirstOrDefault();
+                        //    if (TotalCement != null)
+                        //    {
+                        //        ViewBag.TotalCement = TotalCement.Total;
+                        //    }
+                        //    else
+                        //    {
+                        //        ViewBag.TotalCement = 0;
+                        //    }
 
-                    //    var TotalRod = ProductCount.CountRod(db).FirstOrDefault();
-                    //    if (TotalRod != null)
-                    //    {
-                    //        ViewBag.TotalRod = TotalRod.Total;
-                    //    }
-                    //    else
-                    //    {
-                    //        ViewBag.TotalRod = 0;
-                    //    }
+                        //    var TotalRod = ProductCount.CountRod(db).FirstOrDefault();
+                        //    if (TotalRod != null)
+                        //    {
+                        //        ViewBag.TotalRod = TotalRod.Total;
+                        //    }
+                        //    else
+                        //    {
+                        //        ViewBag.TotalRod = 0;
+                        //    }
 
-                    //    var TotalSuppliers = Statistics.CountSuppliers(db).FirstOrDefault();
-                    //    if (TotalSuppliers != null)
-                    //    {
-                    //        ViewBag.TotalSuppliers = TotalSuppliers.TotalSuppliers;
-                    //    }
-                    //    else
-                    //    {
-                    //        ViewBag.TotalSuppliers = 0;
-                    //    }
+                        var TotalSuppliers = Statistics.CountSuppliers(db).FirstOrDefault();
+                        if (TotalSuppliers != null)
+                        {
+                            ViewBag.TotalSuppliers = TotalSuppliers.TotalSuppliers;
+                        }
+                        else
+                        {
+                            ViewBag.TotalSuppliers = 0;
+                        }
 
-                    //    var TotalCustomers = Statistics.CountCustomers(db).FirstOrDefault();
-                    //    if (TotalCustomers != null)
-                    //    {
-                    //        ViewBag.TotalCustomers = TotalCustomers.TotalCustomers;
-                    //    }
-                    //    else
-                    //    {
-                    //        ViewBag.TotalCustomers = 0;
-                    //    }
+                        var TotalCustomers = Statistics.CountCustomers(db).FirstOrDefault();
+                        if (TotalCustomers != null)
+                        {
+                            ViewBag.TotalCustomers = TotalCustomers.TotalCustomers;
+                        }
+                        else
+                        {
+                            ViewBag.TotalCustomers = 0;
+                        }
 
-                    //    var TotalProducts = Statistics.CountTotalProducts(db).FirstOrDefault();
-                    //    if (TotalProducts != null)
-                    //    {
-                    //        ViewBag.TotalProducts = TotalProducts.TotalProducts;
-                    //    }
-                    //    else
-                    //    {
-                    //        ViewBag.TotalProducts = 0;
-                    //    }
+                        var TotalProducts = Statistics.CountTotalProducts(db).FirstOrDefault();
+                        if (TotalProducts != null)
+                        {
+                            ViewBag.TotalProducts = TotalProducts.TotalProducts;
+                        }
+                        else
+                        {
+                            ViewBag.TotalProducts = 0;
+                        }
 
-                    //    var TotalSales = Statistics.CountTotalSales(db).FirstOrDefault();
-                    //    if (TotalSales != null)
-                    //    {
-                    //        ViewBag.TotalSales = TotalSales.TotalSales;
-                    //    }
-                    //    else
-                    //    {
-                    //        ViewBag.TotalSales = 0;
-                    //    }
+                        var TotalSales = Statistics.CountTotalSales(db).FirstOrDefault();
+                        if (TotalSales != null)
+                        {
+                            ViewBag.TotalSales = TotalSales.TotalSales;
+                        }
+                        else
+                        {
+                            ViewBag.TotalSales = 0;
+                        }
 
-                    //}
+                    }
                     return View();
                 }
                 else

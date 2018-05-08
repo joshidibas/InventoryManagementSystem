@@ -14,7 +14,7 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4"> @Html.ActionLink("Add new Product Type Supplier", "Create")</h3>
+                                        <h3 class="h4"><i class="icon-large icon-plus"></i> @Html.ActionLink("New Product Supplier", "Create")</h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -56,8 +56,8 @@
                                                                 @Html.DisplayFor(modelItem => item.UserAccounts.Email)
                                                             </td>
                                                             <td>
-                                                                <a href='@Url.Action("Edit", "ProductTypeSuppliers", new { ptid = item.ProductTypeID, sid = item.SupplierID })' class="btn btn-info">Edit</a>
-                                                                <a href='@Url.Action("Delete", "ProductTypeSuppliers" ,new { ptid = item.ProductTypeID, sid = item.SupplierID })' class="btn btn-danger">Delete</a>                                                              
+                                                                <a href='@Url.Action("Edit", "ProductSuppliers", new { ptid = item.ProductID, sid = item.SupplierID })' class="btn btn-info">Edit</a>
+                                                                <a href='@Url.Action("Delete", "ProductSuppliers" ,new { ptid = item.ProductID, sid = item.SupplierID })' class="btn btn-danger">Delete</a>                                                              
                                                             </td>
                                                         </tr>
                                                     }

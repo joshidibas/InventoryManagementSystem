@@ -38,9 +38,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-home:before {
-  content: "\62";
-}
+
+
 .icon-form:before {
   content: "\61";
 }

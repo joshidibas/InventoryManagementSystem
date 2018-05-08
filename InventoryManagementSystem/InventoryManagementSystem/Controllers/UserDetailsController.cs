@@ -59,10 +59,19 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserDetailD,UserAccountID,FirstName,LastName,BirthDate,Phone,Address,DateCreated,DateModified,ModifiedBy")] UserDetails userDetails)
+        public ActionResult Create([Bind(Include = "UserDetailD,UserAccountID,FirstName,LastName,BirthDate,ContactNumber,Address,DateCreated,DateModified,ModifiedBy")] UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {
+                if (userDetails.DateCreated == null)
+                {
+                    userDetails.DateCreated = DateTime.Now;
+                }
+                if (userDetails.DateModified == null)
+                {
+                    userDetails.DateModified = DateTime.Now;
+                }
+                userDetails.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -97,10 +106,12 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserDetailD,UserAccountID,FirstName,LastName,BirthDate,Phone,Address,DateCreated,DateModified,ModifiedBy")] UserDetails userDetails)
+        public ActionResult Edit([Bind(Include = "UserDetailD,UserAccountID,FirstName,LastName,BirthDate,ContactNumber,Address,DateCreated,DateModified,ModifiedBy")] UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {
+                userDetails.DateModified = DateTime.Now;
+                userDetails.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Entry(userDetails).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

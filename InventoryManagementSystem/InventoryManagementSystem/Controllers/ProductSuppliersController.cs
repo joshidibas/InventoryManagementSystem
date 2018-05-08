@@ -26,7 +26,7 @@ namespace InventoryManagementSystem.Controllers
         }
 
         // GET: ProductSuppliers/Details/5
-        public ActionResult Details(int? ptid,int? sid)
+        public ActionResult Details(int? pid,int? sid)
         {
 
 
@@ -34,7 +34,7 @@ namespace InventoryManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductSupplier ProductSupplier = db.ProductSupplier.Find(ptid, sid);
+            ProductSupplier ProductSupplier = db.ProductSupplier.Find(pid, sid);
             if (ProductSupplier == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace InventoryManagementSystem.Controllers
         {
 
 
-            ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductTypeID", "ProductTypeName");
+            ViewBag.ProductID = new SelectList(db.Product, "ProductID", "ProductName");
             ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email");
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierEmail");
             return View();
@@ -58,36 +58,45 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductSupplierID,ProductTypeID,SupplierID,DateCreated,DateModified,ModifiedBy")] ProductSupplier ProductSupplier)
+        public ActionResult Create([Bind(Include = "ProductSupplierID,ProductID,SupplierID,DateCreated,DateModified,ModifiedBy")] ProductSupplier ProductSupplier)
         {
             if (ModelState.IsValid)
             {
+                if (ProductSupplier.DateCreated == null)
+                {
+                    ProductSupplier.DateCreated = DateTime.Now;
+                }
+                if (ProductSupplier.DateModified == null)
+                {
+                    ProductSupplier.DateModified = DateTime.Now;
+                }
+                ProductSupplier.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.ProductSupplier.Add(ProductSupplier);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductID", "ProductTypeName", ProductSupplier.ProductID);
+            ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductID", "ProductName", ProductSupplier.ProductID);
             ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", ProductSupplier.ModifiedBy);
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierEmail", ProductSupplier.SupplierID);
             return View(ProductSupplier);
         }
 
         // GET: ProductSuppliers/Edit/5
-        public ActionResult Edit(int? ptid, int?sid)
+        public ActionResult Edit(int? pid, int?sid)
         {
 
 
-            if (sid == null && ptid==null)
+            if (sid == null && pid==null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductSupplier ProductSupplier = db.ProductSupplier.Find(ptid,sid);
+            ProductSupplier ProductSupplier = db.ProductSupplier.Find(pid,sid);
             if (ProductSupplier == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductID", "ProductTypeName", ProductSupplier.ProductID);
+            ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductID", "ProductName", ProductSupplier.ProductID);
             ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", ProductSupplier.ModifiedBy);
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierEmail", ProductSupplier.SupplierID);
             return View(ProductSupplier);
@@ -98,30 +107,32 @@ namespace InventoryManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductSupplierID,ProductTypeID,SupplierID,DateCreated,DateModified,ModifiedBy")] ProductSupplier ProductSupplier)
+        public ActionResult Edit([Bind(Include = "ProductSupplierID,ProductID,SupplierID,DateCreated,DateModified,ModifiedBy")] ProductSupplier ProductSupplier)
         {
             if (ModelState.IsValid)
             {
+                ProductSupplier.DateModified = DateTime.Now;
+                ProductSupplier.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Entry(ProductSupplier).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductID", "ProductTypeName", ProductSupplier.ProductID);
+            ViewBag.ProductTypeID = new SelectList(db.ProductType, "ProductID", "ProductName", ProductSupplier.ProductID);
             ViewBag.ModifiedBy = new SelectList(db.UserAccounts, "UserAccountID", "Email", ProductSupplier.ModifiedBy);
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "SupplierEmail", ProductSupplier.SupplierID);
             return View(ProductSupplier);
         }
 
         // GET: ProductSuppliers/Delete/5
-        public ActionResult Delete(int? ptid, int? sid)
+        public ActionResult Delete(int? pid, int? sid)
         {
 
 
-            if (sid == null && ptid == null)
+            if (sid == null && pid == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductSupplier ProductSupplier = db.ProductSupplier.Find(ptid,sid);
+            ProductSupplier ProductSupplier = db.ProductSupplier.Find(pid,sid);
             if (ProductSupplier == null)
             {
                 return HttpNotFound();

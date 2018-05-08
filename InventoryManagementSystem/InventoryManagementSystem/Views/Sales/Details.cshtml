@@ -27,52 +27,47 @@
                                     <div class="card-header d-flex align-items-center">
                                         <h3 class="h4">Details</h3>
                                     </div>
+
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
+                                        <div id ="div_print" class="invoice-box">
+                                            <table cellpadding="0" cellspacing="0">
+                                                <tr class="top">
+                                                    <td colspan="3">
+                                                        <table>
+                                                            <tr>
+                                                                <td class="title">
+                                                                    <h2>Our Shop</h2><br>
+                                                                                     <h4>Pan No: 1234567890</h4>
+                                                                </td>
 
-                                                        <th>
-                                                            SalesID
-                                                        </th>
-                                                        <th>
-                                                            Total
-                                                        </th>
-                                                        <th>
-                                                            Date
-                                                        </th>
+                                                                <td>
+                                                                    <h4>INVENTORY MS</h4> <br>
+                                                                    Location: Satdobato<br>
+                                                                    Pan No: 1234567890<br>
+                                                                    Phone No: 9860908329
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
 
+                                                <tr class="information">
+                                                    <td colspan="2">
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                   Invoice No.: @Html.DisplayFor(model => model.SalesID)
+                                                                </td>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                   
-                                                        <tr>
-
-                                                            <td>
-                                                                @Html.DisplayFor(model => model.SalesID)
-                                                            </td>
-
-                                                            <td>
-                                                                @Html.DisplayFor(model => model.BillingAmount)
-                                                            </td>
-
-
-
-                                                            <td>
-                                                                @Html.DisplayFor(model => model.BillingDate)
-                                                            </td>
-
-
-                                                        </tr>
-                                                    
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
+                                                                <td>
+                                                                   Date : @Html.DisplayFor(model => model.BillingDate)
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <div class="table-responsive">
+                                                <table class="table table-striped">
                                                 <thead>
                                                     <tr>
 
@@ -91,35 +86,51 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach (var item in ViewBag.GetBill)
-                                                    {
-                                                        <tr>
+                                                        {
+                                                            <tr>
 
-                                                            <td>
-                                                                @item.ProductName
-                                                            </td>
+                                                                <td>
+                                                                    @item.ProductName
+                                                                </td>
 
-                                                            <td>
-                                                                @item.PricePerItem
-                                                            </td>
-
-
-
-                                                            <td>
-                                                                @item.Quantity
-                                                            </td>
+                                                                <td style="text-align: left">
+                                                                    @item.PricePerItem
+                                                                </td>
 
 
-                                                        </tr>
-                                                    }
+
+                                                                <td>
+                                                                    @item.Quantity
+                                                                </td>
+
+
+                                                            </tr>
+                                                        }
                                                 </tbody>
                                             </table>
+
+
+                                                <tr class="total">
+                                                    <td>Tax Included</td>
+
+                                                    <td>
+                                                        <b>Total: @Html.DisplayFor(model => model.BillingAmount)</b>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            
+                                        </div>
+                                        
+
+                                        <input name="b_print" type="button" class="ipt btn btn-success" onClick="printdiv('div_print');" value=" Print ">
+                                        
                                             <p> @Html.ActionLink("Back to List", "Index")</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </section>
             </div>
         </div>

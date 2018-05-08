@@ -15,7 +15,7 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4"> @Html.ActionLink("Add Stock", "Create")</h3>
+                                        <h3 class="h4"><i class="icon-large icon-plus"></i> @Html.ActionLink("Add Stock", "Create")</h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -31,7 +31,7 @@
                                                         <th>
                                                             Date Created
                                                         </th>
-                                                       
+
                                                         <th>
                                                             Modified By
                                                         </th>
@@ -42,33 +42,36 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach (var item in Model)
-                                                    {
-                                                        <tr>
-                                                            <td>
-                                                                @Html.DisplayFor(modelItem => item.Product.ProductName)
-                                                            </td>
-                                                            <td>
-                                                                @Html.DisplayFor(modelItem => item.QuantityRemaining)
-                                                            </td>
-                                                            <td>
-                                                                @Html.DisplayFor(modelItem => item.DateCreated)
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                @Html.DisplayFor(modelItem => item.UserAccounts.Email)
-                                                            </td>
-                                                            <td>
-                                                                <a href='@Url.Action("Edit", "Stock", new { id = item.StockID })' class="btn btn-info">Edit</a>
-                                                                <a href='@Url.Action("Delete", "Stock" ,new { id = item.StockID })' class="btn btn-danger">Delete</a>
+                    {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.QuantityRemaining)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateCreated)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserAccounts.Email)
+                                    </td>
+                                    <td>
+                                        <a href='@Url.Action("Edit", "Stock", new { id = item.StockID })' class="btn btn-info">Edit</a>
+                                        <a href='@Url.Action("Delete", "Stock" ,new { id = item.StockID })' class="btn btn-danger">Delete</a>
 
 
-                                                              
-                                                            </td>
-                                                        </tr>
-                                                    }
+
+                                    </td>
+                                </tr>
+}
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="card-header d-flex align-items-center">
+                                        <h4 style="text-align:end"> <a href="/ProductXDetails/Create"><u>Add Product Details</u></a></h4>
                                     </div>
                                 </div>
                             </div>

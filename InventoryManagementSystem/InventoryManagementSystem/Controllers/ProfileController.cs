@@ -54,6 +54,8 @@ namespace InventoryManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                userAccounts.DateModified = DateTime.Now;
+                userAccounts.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Entry(userAccounts).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -77,7 +79,7 @@ namespace InventoryManagementSystem.Controllers
                         var user = db.UserAccounts.Where(u => u.UserAccountID == UserAccountID).FirstOrDefault();
                         if(user.Password == oldpassword)
                         {
-                            if (newpassword == oldpassword)
+                            if (newpassword == confirmpassword)
                             {
                                 await QueryHelper.UpdatePassowrd(db, UserAccountID, confirmpassword);
                                 return View("Index");
