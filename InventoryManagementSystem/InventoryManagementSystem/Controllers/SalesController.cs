@@ -78,6 +78,7 @@ namespace InventoryManagementSystem.Controllers
                 {
                     sales.DateModified = DateTime.Now;
                 }
+                sales.BillingAmount = 0;
                 sales.ModifiedBy = Convert.ToInt32(HttpContext.Session["UserAccountID"]);
                 db.Sales.Add(sales);
                 db.SaveChanges();

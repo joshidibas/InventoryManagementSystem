@@ -14,8 +14,8 @@
           <Property Name="ProductName" Type="varchar" MaxLength="100" />
           <Property Name="PricePerItem" Type="int" />
           <Property Name="Description" Type="varchar" MaxLength="100" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductSales">
@@ -27,8 +27,8 @@
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="SalesID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductSupplier">
@@ -39,8 +39,8 @@
           <Property Name="ProductSupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="SupplierID" Type="int" Nullable="false" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductType">
@@ -49,8 +49,8 @@
           </Key>
           <Property Name="ProductTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductTypeName" Type="varchar" MaxLength="100" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductXDetails">
@@ -63,8 +63,8 @@
           <Property Name="Location" Type="varchar" MaxLength="50" />
           <Property Name="ThresholdQuantity" Type="int" />
           <Property Name="Unit" Type="varchar" MaxLength="30" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -74,8 +74,8 @@
           <Property Name="BillingDate" Type="date" />
           <Property Name="BillingAmount" Type="int" />
           <Property Name="UserAccountID" Type="int" Nullable="false" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Stock">
@@ -85,8 +85,8 @@
           <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="QuantityRemaining" Type="int" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="StockManagment">
@@ -99,8 +99,8 @@
           <Property Name="OperationDate" Type="date" />
           <Property Name="Quantity" Type="int" />
           <Property Name="UserAccountID" Type="int" Nullable="false" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SupplierDetail">
@@ -112,8 +112,8 @@
           <Property Name="ContactNumber" Type="varchar" MaxLength="100" />
           <Property Name="Address" Type="varchar" MaxLength="100" />
           <Property Name="ContactPersonName" Type="varchar" MaxLength="100" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Suppliers">
@@ -124,8 +124,8 @@
           <Property Name="SupplierEmail" Type="varchar" MaxLength="100" />
           <Property Name="RegistrationNumber" Type="varchar" MaxLength="100" />
           <Property Name="SupplierName" Type="varchar" MaxLength="100" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserAccounts">
@@ -135,9 +135,9 @@
           <Property Name="UserAccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserTypeID" Type="int" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
-          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" />
         </EntityType>
         <EntityType Name="UserDetails">
@@ -151,8 +151,8 @@
           <Property Name="BirthDate" Type="date" />
           <Property Name="ContactNumber" Type="varchar" MaxLength="100" />
           <Property Name="Address" Type="varchar" MaxLength="100" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserType">
@@ -161,8 +161,8 @@
           </Key>
           <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserTypeName" Type="varchar" MaxLength="100" />
-          <Property Name="DateCreated" Type="date" />
-          <Property Name="DateModified" Type="date" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="Product_ModifiedBy_FK">
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="1" />
@@ -576,8 +576,8 @@
           <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="PricePerItem" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.Product_ModifiedBy_FK" FromRole="Product" ToRole="UserAccounts" />
           <NavigationProperty Name="ProductType" Relationship="Self.Product_ProductType_FK" FromRole="Product" ToRole="ProductType" />
@@ -595,8 +595,8 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="SalesID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.ProductSales_Product_FK" FromRole="ProductSales" ToRole="Product" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.ProductSales_ModifiedBy_FK" FromRole="ProductSales" ToRole="UserAccounts" />
@@ -610,8 +610,8 @@
           <Property Name="ProductSupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="SupplierID" Type="Int32" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.ProductSupplier_PT_FK" FromRole="ProductSupplier" ToRole="Product" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.ProductSupplier_ModifiedBy_FK" FromRole="ProductSupplier" ToRole="UserAccounts" />
@@ -623,8 +623,8 @@
           </Key>
           <Property Name="ProductTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.Product_ProductType_FK" FromRole="ProductType" ToRole="Product" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.ProductType_ModifiedBy_FK" FromRole="ProductType" ToRole="UserAccounts" />
@@ -639,8 +639,8 @@
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ThresholdQuantity" Type="Int32" />
           <Property Name="Unit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.ProductXDetails_UserAccounts_FK" FromRole="ProductXDetails" ToRole="Product" />
         </EntityType>
         <EntityType Name="Sales">
@@ -651,8 +651,8 @@
           <Property Name="BillingDate" Type="DateTime" Precision="0" />
           <Property Name="BillingAmount" Type="Int32" />
           <Property Name="UserAccountID" Type="Int32" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProductSales" Relationship="Self.ProductSales_Sales_FK" FromRole="Sales" ToRole="ProductSales" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.Sales_ModifiedBy_FK" FromRole="Sales" ToRole="UserAccounts" />
@@ -665,8 +665,8 @@
           <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="QuantityRemaining" Type="Int32" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.Stock_Product_FK" FromRole="Stock" ToRole="Product" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.Stock_ModifiedBy_FK" FromRole="Stock" ToRole="UserAccounts" />
@@ -682,8 +682,8 @@
           <Property Name="OperationDate" Type="DateTime" Precision="0" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="UserAccountID" Type="Int32" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Stock" Relationship="Self.StockManagment_Stock_FK" FromRole="StockManagment" ToRole="Stock" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.StockManagment_ModifiedBy_FK" FromRole="StockManagment" ToRole="UserAccounts" />
@@ -698,8 +698,8 @@
           <Property Name="ContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ContactPersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.SupplierDetail_ModifiedBy_FK" FromRole="SupplierDetail" ToRole="UserAccounts" />
           <NavigationProperty Name="Suppliers" Relationship="Self.SupplierDetail_Supplier_FK" FromRole="SupplierDetail" ToRole="Suppliers" />
@@ -712,8 +712,8 @@
           <Property Name="SupplierEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RegistrationNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProductSupplier" Relationship="Self.ProductSupplier_Sup_FK" FromRole="Suppliers" ToRole="ProductSupplier" />
           <NavigationProperty Name="SupplierDetail" Relationship="Self.SupplierDetail_Supplier_FK" FromRole="Suppliers" ToRole="SupplierDetail" />
@@ -726,9 +726,9 @@
           <Property Name="UserAccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserTypeID" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" />
           <NavigationProperty Name="Product" Relationship="Self.Product_ModifiedBy_FK" FromRole="UserAccounts" ToRole="Product" />
           <NavigationProperty Name="ProductSales" Relationship="Self.ProductSales_ModifiedBy_FK" FromRole="UserAccounts" ToRole="ProductSales" />
@@ -758,8 +758,8 @@
           <Property Name="BirthDate" Type="DateTime" Precision="0" />
           <Property Name="ContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.UserDetails_ModifiedBy_FK" FromRole="UserDetails" ToRole="UserAccounts" />
           <NavigationProperty Name="UserAccounts1" Relationship="Self.UserDetails_UserAccounts_FK" FromRole="UserDetails" ToRole="UserAccounts" />
@@ -770,8 +770,8 @@
           </Key>
           <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="0" />
-          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" Nullable="false" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.UserAccounts_UserType_FKv1" FromRole="UserType" ToRole="UserAccounts" />
         </EntityType>
         <Association Name="Product_ModifiedBy_FK">

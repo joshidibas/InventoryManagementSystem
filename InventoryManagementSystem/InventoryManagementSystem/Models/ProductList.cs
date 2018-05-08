@@ -43,7 +43,9 @@ namespace InventoryManagementSystem.Models
         {
             string objs = @"
                 select p.ProductName, s.QuantityRemaining from stock s
-                inner join Product p on s.productid= p.ProductID where s.QuantityRemaining<= 10";
+                inner join Product p on s.productid= p.ProductID 
+                inner join ProductXDetails pd on s.productid = pd.productid
+                where s.QuantityRemaining<= pd.ThresholdQuantity";
             var result = db.Database.SqlQuery<ProductList>(objs);
             return result;
         }

@@ -32,7 +32,7 @@
                                         <div id ="div_print" class="invoice-box">
                                             <table cellpadding="0" cellspacing="0">
                                                 <tr class="top">
-                                                    <td colspan="3">
+                                                    <td colspan="6">
                                                         <table>
                                                             <tr>
                                                                 <td class="title">
@@ -40,6 +40,10 @@
                                                                                      <h4>Pan No: 1234567890</h4>
                                                                 </td>
 
+                                                                <td style="float:right">
+                                                                    ********************************************
+                                                                </td>
+                                                                
                                                                 <td>
                                                                     <h4>INVENTORY MS</h4> <br>
                                                                     Location: Satdobato<br>
@@ -52,15 +56,20 @@
                                                 </tr>
 
                                                 <tr class="information">
-                                                    <td colspan="2">
+                                                    <td colspan="6">
                                                         <table>
                                                             <tr>
                                                                 <td>
-                                                                   Invoice No.: @Html.DisplayFor(model => model.SalesID)
+                                                                    Invoice No.: @Html.DisplayFor(model => model.SalesID)
                                                                 </td>
 
                                                                 <td>
-                                                                   Date : @Html.DisplayFor(model => model.BillingDate)
+                                                                    <h4>Estimate Bill</h4>  
+                                                                    ********************************************
+                                                                </td>
+                                                              
+                                                                <td>
+                                                                    Date : @Html.DisplayFor(model => model.BillingDate)
                                                                 </td>
                                                             </tr>
                                                         </table>

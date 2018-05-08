@@ -17,11 +17,11 @@ namespace InventoryManagementSystem.ViewModel
 
             SqlParameter amountParam = new SqlParameter("BillingAmount", BillingAmount);
             SqlParameter salesParam = new SqlParameter("SalesID", SalesID);
-            if(BillingAmount == null) { 
+           
             try
             {
                 string objs = @"
-                UPDATE Sales SET BillingAmount = @BillingAmount
+                UPDATE Sales SET BillingAmount = BillingAmount+@BillingAmount
                 WHERE SalesID = @SalesID";
                 object[] parameters = new object[] { amountParam, salesParam };
                 var result = db.Database.ExecuteSqlCommandAsync(objs, parameters);
@@ -32,23 +32,7 @@ namespace InventoryManagementSystem.ViewModel
                 Debug.WriteLine(ex.Message);
                 return null;
             }
-            }
-            else {
-                try
-                {
-                    string objs = @"
-                UPDATE Sales SET BillingAmount = BillingAmount + @BillingAmount
-                WHERE SalesID = @SalesID";
-                    object[] parameters = new object[] { amountParam, salesParam };
-                    var result = db.Database.ExecuteSqlCommandAsync(objs, parameters);
-                    return result;
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                    return null;
-                }
-            }
+            
         }
     
             

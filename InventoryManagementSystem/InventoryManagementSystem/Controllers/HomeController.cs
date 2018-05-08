@@ -104,16 +104,8 @@ namespace InventoryManagementSystem.Controllers
                         {
                             ViewBag.TotalProducts = 0;
                         }
-
-                        var TotalSales = Statistics.CountTotalSales(db).FirstOrDefault();
-                        if (TotalSales != null)
-                        {
-                            ViewBag.TotalSales = TotalSales.TotalSales;
-                        }
-                        else
-                        {
-                            ViewBag.TotalSales = 0;
-                        }
+                        
+                       
 
                     }
                     return View();
