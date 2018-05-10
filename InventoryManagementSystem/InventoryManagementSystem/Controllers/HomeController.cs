@@ -35,46 +35,7 @@ namespace InventoryManagementSystem.Controllers
                         var ItemsNotSold31Days = ProductList.GetItemsNotSold31Days(db).ToList();
                         ViewBag.ItemsNotSold31Days = ItemsNotSold31Days;
 
-                        //    var TotalBalwa = ProductCount.CountBalwa(db).FirstOrDefault();
-                        //    if (TotalBalwa != null)
-                        //    {
-                        //        ViewBag.TotalBalwa = TotalBalwa.Total;
-                        //    }
-                        //    else
-                        //    {
-                        //        ViewBag.TotalBalwa = 0;
-                        //    }
-
-                        //    var TotalGitti = ProductCount.CountGitti(db).FirstOrDefault();
-                        //    if (TotalGitti != null)
-                        //    {
-                        //        ViewBag.TotalGitti = TotalGitti.Total;
-                        //    }
-                        //    else
-                        //    {
-                        //        ViewBag.TotalGitti = 0;
-                        //    }
-
-                        //    var TotalCement = ProductCount.CountCement(db).FirstOrDefault();
-                        //    if (TotalCement != null)
-                        //    {
-                        //        ViewBag.TotalCement = TotalCement.Total;
-                        //    }
-                        //    else
-                        //    {
-                        //        ViewBag.TotalCement = 0;
-                        //    }
-
-                        //    var TotalRod = ProductCount.CountRod(db).FirstOrDefault();
-                        //    if (TotalRod != null)
-                        //    {
-                        //        ViewBag.TotalRod = TotalRod.Total;
-                        //    }
-                        //    else
-                        //    {
-                        //        ViewBag.TotalRod = 0;
-                        //    }
-
+  
                         var TotalSuppliers = Statistics.CountSuppliers(db).FirstOrDefault();
                         if (TotalSuppliers != null)
                         {
@@ -104,9 +65,21 @@ namespace InventoryManagementSystem.Controllers
                         {
                             ViewBag.TotalProducts = 0;
                         }
-                        
-                       
+                        //try { 
+                        //var sales = Statistics.Sales(db).FirstOrDefault();
 
+                        //if (sales == null)
+                        //{
+                        //    ViewBag.Sales = 0;
+                        //}
+                        //else
+                        //{
+                        //    ViewBag.Sales = sales.DailySales;
+                        //}
+                        //}
+                        //catch
+                        //{
+                        //}
                     }
                     return View();
                 }

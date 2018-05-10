@@ -10,7 +10,7 @@ namespace InventoryManagementSystem.Models
     {
         public int Total { get; set; }
 
-        public static IEnumerable<ProductCount> CountBalwa(IMSEntities db)
+        public static IEnumerable<ProductCount> Count1(IMSEntities db)
         {
             string objs = @"
                 select sum(s.QuantityRemaining) as 'Total' from Product p
@@ -21,7 +21,7 @@ namespace InventoryManagementSystem.Models
             return result;
         }
 
-        public static IEnumerable<ProductCount> CountGitti(IMSEntities db)
+        public static IEnumerable<ProductCount> Count2(IMSEntities db)
         {
             string objs = @"
                 select sum(s.QuantityRemaining) as 'Total' from Product p
@@ -32,7 +32,7 @@ namespace InventoryManagementSystem.Models
             return result;
         }
 
-        public static IEnumerable<ProductCount> CountCement(IMSEntities db)
+        public static IEnumerable<ProductCount> Count3(IMSEntities db)
         {
             string objs = @"
                 select sum(s.QuantityRemaining) as 'Total' from Product p
@@ -43,7 +43,7 @@ namespace InventoryManagementSystem.Models
             return result;
         }
 
-        public static IEnumerable<ProductCount> CountRod(IMSEntities db)
+        public static IEnumerable<ProductCount> Count4(IMSEntities db)
         {
             string objs = @"
                 select sum(s.QuantityRemaining) as 'Total' from Product p

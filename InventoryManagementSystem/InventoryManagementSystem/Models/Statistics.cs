@@ -11,6 +11,7 @@ namespace InventoryManagementSystem.Models
         public int TotalCustomers { get; set; }
         public int TotalProducts { get; set; }
         public int TotalSales { get; set; }
+        public int DailySales { get; set; }
 
 
         public static IEnumerable<Statistics> CountSuppliers(IMSEntities db)
@@ -24,8 +25,7 @@ namespace InventoryManagementSystem.Models
         public static IEnumerable<Statistics> CountCustomers(IMSEntities db)
         {
             string objs = @"
-                select sum(BillingAmount) as 'TotalSales' from Sales
-                where DateCreated <= (GETDATE())";
+                select count(UserAccountID) as 'TotalCustomers' from UserAccounts where usertypeid = 3";
             var result = db.Database.SqlQuery<Statistics>(objs);
             return result;
         }
@@ -37,14 +37,16 @@ namespace InventoryManagementSystem.Models
             var result = db.Database.SqlQuery<Statistics>(objs);
             return result;
         }
+        public static IEnumerable<Statistics> Sales(IMSEntities db) {
+            string objs = @"
+            select sum(BillingAmount) as 'TotalSales' from Sales s
+                where s.DateCreated > (CAST(CAST(GETDATE() AS DATE) AS DATETIME))" ;
+            var result = db.Database.SqlQuery<Statistics>(objs);
+            return result;
 
-        //public static IEnumerable<Statistics> CountTotalSales(IMSEntities db)
-        //{
-        //    string objs = @"
-        //        select sum(BillingAmount) as 'TotalSales' from Sales
-        //        where DateCreated <= (GETDATE())";
-        //    var result = db.Database.SqlQuery<Statistics>(objs);
-        //    return result;
-        //}
+
+
+        }
+       
     }
 }

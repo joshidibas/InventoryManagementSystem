@@ -65,7 +65,7 @@ namespace InventoryManagementSystem.Controllers
                     var quantityRequest = productSales.Quantity;
                     var result = db.Stock.Where(p => p.ProductID == productSales.ProductID).FirstOrDefault();
                     var quantityRemaning = result.QuantityRemaining;
-                    //if quantity remaining >= quantity request
+                    //if remaining qunatity >= requested quantity
                     if (quantityRemaning >= quantityRequest)
                     {
                         if (productSales.DateCreated == null)
