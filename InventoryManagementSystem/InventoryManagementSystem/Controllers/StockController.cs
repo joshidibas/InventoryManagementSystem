@@ -17,11 +17,16 @@ namespace InventoryManagementSystem.Controllers
 
 
         // GET: Stock
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
 
 
             var stock = db.Stock.Include(s => s.Product).Include(s => s.UserAccounts);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                stock = stock.Where(s => s.Product.ProductName.Contains(searchString));
+
+            }
             return View(stock.ToList());
         }
 

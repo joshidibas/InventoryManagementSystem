@@ -16,10 +16,24 @@ namespace InventoryManagementSystem.Controllers
     {
         private IMSEntities db = new IMSEntities();
         // GET: ProductSales
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var productSales = db.ProductSales.Include(p => p.Product).Include(p => p.UserAccounts).Include(p => p.Sales);
+            switch (sortOrder)
+            {
+                
+                case "Date":
+                    productSales = productSales.OrderBy(s => s.DateCreated);
+                    break;
+                case "date_desc":
+                    productSales = productSales.OrderByDescending(s => s.DateCreated);
+                    break;
+                default:
+                    productSales = productSales.OrderByDescending(s => s.DateCreated);
+                    break;
+            }
+           
             return View(productSales.ToList());
         }
 

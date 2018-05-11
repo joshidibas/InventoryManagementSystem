@@ -21,41 +21,45 @@
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Name</th>
+                                                        <th>
+                                                            @Html.ActionLink("Product Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                                                        </th>
                                                         <th>Price</th>
                                                         <th>Description</th>
-                                                        <th>Date Created</th>
+                                                        <th>
+                                                            @Html.ActionLink("Date Created", "Index", new { sortOrder = ViewBag.DateSortParm })
+                                                        </th>
                                                         <th>Product Type</th>
 
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach (var item in Model)
-                    {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProductName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PricePerItem)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DateCreated)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProductType.ProductTypeName)
-                                    </td>
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ProductName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.PricePerItem)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Description)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateCreated)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ProductType.ProductTypeName)
+                                                            </td>
 
-                                    <td>
-                                        <a href='@Url.Action("Details", null , new { id = item.ProductID })' class="btn btn-primary">Details</a>
-                                        <a href='@Url.Action("Edit", "Products" , new { id = item.ProductID })' class="btn btn-info">Edit</a>
-                                        <a href='@Url.Action("Delete", "Products" , new { id = item.ProductID })' class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-}
+                                                            <td>
+                                                                <a href='@Url.Action("Details", null , new { id = item.ProductID })' class="btn btn-primary">Details</a>
+                                                                <a href='@Url.Action("Edit", "Products" , new { id = item.ProductID })' class="btn btn-info">Edit</a>
+                                                                <a href='@Url.Action("Delete", "Products" , new { id = item.ProductID })' class="btn btn-danger">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    }
                                                 </tbody>
                                             </table>
                                         </div>

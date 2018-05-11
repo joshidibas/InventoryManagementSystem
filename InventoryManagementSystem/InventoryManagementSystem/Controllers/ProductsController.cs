@@ -18,11 +18,32 @@ namespace InventoryManagementSystem.Controllers
 
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-
-
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var product = db.Product.Include(p => p.UserAccounts).Include(p => p.ProductType);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                product = product.Where(s => s.ProductName.Contains(searchString));
+
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    product = product.OrderByDescending(s => s.ProductName);
+                    break;
+                case "Date":
+                    product = product.OrderBy(s => s.DateCreated);
+                    break;
+                case "date_desc":
+                    product = product.OrderByDescending(s => s.DateCreated);
+                    break;
+                default:
+                    product = product.OrderByDescending(s => s.ProductID);
+                    break;
+            }
             return View(product.ToList());
         }
 
@@ -154,10 +175,21 @@ namespace InventoryManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Product.Find(id);
-            db.Product.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                   Product product = db.Product.Find(id);
+                    db.Product.Remove(product);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+               
+            }
+
+            catch(Exception ex)
+            {
+                ViewBag.Error =  ex.Message;
+            }
+            return View();
         }
 
         protected override void Dispose(bool disposing)

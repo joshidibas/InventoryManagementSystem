@@ -15,9 +15,15 @@ namespace InventoryManagementSystem.Controllers
         private IMSEntities db = new IMSEntities();
 
         // GET: ProductXDetails
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+
             var productXDetails = db.ProductXDetails.Include(p => p.Product);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                productXDetails = productXDetails.Where(s => s.Product.ProductName.Contains(searchString));
+
+            }
             return View(productXDetails.ToList());
         }
 

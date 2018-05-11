@@ -19,8 +19,6 @@ namespace InventoryManagementSystem.Controllers
         // GET: Sales
         public ActionResult Index()
         {
-
-
             var sales = db.Sales.Include(s => s.UserAccounts).Include(s => s.UserAccounts1);
             return View(sales.ToList());
         }

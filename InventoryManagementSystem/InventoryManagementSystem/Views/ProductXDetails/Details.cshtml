@@ -3,72 +3,73 @@
 @{
     ViewBag.Title = "Details";
 }
+@section content{
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>ProductXDetails</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitCostPrice)
+            </dt>
 
-<div>
-    <h4>ProductXDetails</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitCostPrice)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UnitCostPrice)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.UnitCostPrice)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ThresholdQuantity)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ThresholdQuantity)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ThresholdQuantity)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ThresholdQuantity)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Unit)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Unit)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Unit)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Unit)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateCreated)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateModified)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateModified)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateModified)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Product.ProductName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Product.ProductName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Product.ProductName)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductDetailID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductDetailID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
