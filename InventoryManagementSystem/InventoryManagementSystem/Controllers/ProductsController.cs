@@ -41,7 +41,7 @@ namespace InventoryManagementSystem.Controllers
                     product = product.OrderByDescending(s => s.DateCreated);
                     break;
                 default:
-                    product = product.OrderByDescending(s => s.ProductID);
+                    product = product.OrderBy(s => s.ProductName);
                     break;
             }
             return View(product.ToList());
